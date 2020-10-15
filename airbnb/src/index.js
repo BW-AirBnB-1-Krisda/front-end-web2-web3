@@ -4,25 +4,27 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore, applyMiddleware } from "redux";
+// import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunk from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 
 import { reducer } from "./reducers"; 
 
-let store = createStore(
-  reducer,
-  applyMiddleware(thunk)
-)
+let store = configureStore({
+  reducer
+  // applyMiddleware(thunk)
+})
 
 console.log("store", store)
 
-
+ 
 ReactDOM.render(
+  
   <React.StrictMode>
-    <Provider>
+    <Provider store={store}>
     <App />
     </Provider>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
