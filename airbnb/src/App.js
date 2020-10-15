@@ -6,6 +6,8 @@ import UserLogin from "./components/UserLogin";
 import Listings from "./components/Listings";
 import PrivateRoute from "./components/PrivateRoute";
 
+import { connect } from "react-redux";
+
 function App() {
   return (
     <Router>
@@ -19,4 +21,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    listings: state.listings
+  }
+}
+
+export default connect(mapStateToProps, {})(App)
