@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-function Login () {
-    const [user, setUser] = useState({username: "", password: ""});
+function Register () {
+    const [user, setUser] = useState({username: "", password: "", email: ""});
 
     const handleNameChange = event => {
         setUser({...user, username: event.target.value});
@@ -11,10 +11,15 @@ function Login () {
         setUser({...user, password: event.target.value});
     };
 
+    const handleEmailChange = event => {
+        setUser({...user, email: event.target.value})
+    }
+
     const handleSubmit = event => {
         event.preventDefault();
         console.log(user.name);
         console.log(user.password);
+        console.log(user.email)
     };
 
     return (
@@ -37,10 +42,18 @@ function Login () {
                         onChange={event => handlePasswordChange(event)}
                     />
                 </label>
-                <button>Login</button>
+                <label>
+                    Email:
+                    <input
+                        type="text"
+                        name="email"
+                        onChange={event => handleEmailChange(event)}
+                    />
+                </label>
+                <button>Register</button>
             </form>
         </div>
     )
 }
 
-export default Login;
+export default Register;
