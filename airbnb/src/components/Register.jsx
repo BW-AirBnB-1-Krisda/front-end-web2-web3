@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Styles.css"
 
 function Register () {
     const [user, setUser] = useState({username: "", password: "", email: ""});
@@ -17,41 +18,54 @@ function Register () {
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(user.name);
+        console.log(user.username);
         console.log(user.password);
         console.log(user.email)
     };
 
     return (
-        <div className="App">
-            {console.log(user)}
+        <div className="base-container">
+            <div className="header">Login</div>
+                <div className="content">
+                <div className="image">
+                <img src="../components/airbnb.jpg" alt="" />
+          </div>
             <form onSubmit={event => handleSubmit(event)}>
-                <label>
-                    Username:
-                    <input
-                        type="text"
-                        name="username"
-                        onChange={event => handleNameChange(event)}
-                    />
-                </label>
-                <label>
-                    Password:
-                    <input
-                        type="text"
-                        name="password"
-                        onChange={event => handlePasswordChange(event)}
-                    />
-                </label>
-                <label>
-                    Email:
-                    <input
-                        type="text"
-                        name="email"
-                        onChange={event => handleEmailChange(event)}
-                    />
-                </label>
-                <button>Register</button>
+                <div className="form-group">
+                    <label>
+                        Username:
+                        <input
+                            type="text"
+                            name="username"
+                            onChange={event => handleNameChange(event)}
+                        />
+                    </label>
+                </div>
+                <div className="form-group">
+                    <label>
+                        Password:
+                        <input
+                            type="text"
+                            name="password"
+                            onChange={event => handlePasswordChange(event)}
+                        />
+                    </label>
+                </div>
+                <div className="form-group">
+                    <label>
+                        Email:
+                        <input
+                            type="text"
+                            name="email"
+                            onChange={event => handleEmailChange(event)}
+                        />
+                    </label>
+                </div>
+                    <button className="btn">
+                        Login
+                    </button>
             </form>
+            </div>
         </div>
     )
 }

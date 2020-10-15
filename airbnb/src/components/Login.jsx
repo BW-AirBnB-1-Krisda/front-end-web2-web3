@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Login.css";
+import "./Style.css";
 
 function Login () {
     const [user, setUser] = useState({username: "", password: ""});
@@ -19,27 +19,40 @@ function Login () {
     };
 
     return (
-        <div className="login">
-            {console.log(user)}
+        <div className="base-container">
+            <div className="header"></div>
+                <div className="content">
+                <div className="image">
+                <img src="../components/airbnb.jpg" alt="" />
+          </div>
             <form onSubmit={event => handleSubmit(event)}>
-                <label>
-                    Username:
-                    <input
-                        type="text"
-                        name="username"
-                        onChange={event => handleNameChange(event)}
-                    />
-                </label>
-                <label>
-                    Password:
-                    <input
-                        type="text"
-                        name="password"
-                        onChange={event => handlePasswordChange(event)}
-                    />
-                </label>
-                <button>Login</button>
+                <div className="form-group">
+                    <label>
+                        Username:
+                        <input
+                            type="text"
+                            name="username"
+                            onChange={event => handleNameChange(event)}
+                        />
+                    </label>
+                </div>
+                <div className="form-group">
+                    <label>
+                        Password:
+                        <input
+                            type="text"
+                            name="password"
+                            onChange={event => handlePasswordChange(event)}
+                        />
+                    </label>
+                </div>
+                <div className="footer">
+                    <button type="button" className="btn">
+                        Login
+                    </button>
+                    </div>
             </form>
+            </div>
         </div>
     )
 }
