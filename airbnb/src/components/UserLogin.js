@@ -1,8 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { axiosWithAuth } from "../util/axiosWithAuth"
 
-function UserLogin() {
+
+const initialLoginForm = {
+
+    username: "",
+    password: ""
+}
+
+function UserLogin(props) {
+
+    const [userLogin, setUserLogin] = useState(initialLoginForm)
+
+    const handleInputChange = (e) => {
+        e.persist()
+        setUserLogin({
+            ...userLogin,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const submitLoginForm = (e) => {
+        e.preventDefault()
+        axiosWithAuth()
+        .post("/login", userLogin)
+        .then((res) => {
+            console.log("Successful login: ", res.data)
+            localStorage.setItem("token", res.data.payload)
+            props.history.push("/dashboard")
+        })
+        .catch((err) => {
+            console.log("Failed to login: ", err)
+        })
+    }
+
     return (
-        <form>
+        <form onSubmit={submitLoginForm}>
 
             <label>Username:</label>
                 <input
@@ -11,6 +44,8 @@ function UserLogin() {
                 id='username'
                 name="username"
                 type='text'
+                value={userLogin.username}
+                onChange={handleInputChange}
                 />
 
             <label>Password:</label>
@@ -19,6 +54,8 @@ function UserLogin() {
                 id='password'
                 name='password'
                 type='text'
+                value={userLogin.password}
+                onChange={handleInputChange}
                 />
 
             <div>
