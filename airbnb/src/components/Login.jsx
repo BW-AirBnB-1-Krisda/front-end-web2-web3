@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login.css";
 
 function Login () {
     const [user, setUser] = useState({username: "", password: ""});
@@ -13,12 +14,12 @@ function Login () {
 
     const handleSubmit = event => {
         event.preventDefault();
-        console.log(user.name);
+        console.log(user.username);
         console.log(user.password);
     };
 
     return (
-        <div className="App">
+        <div className="login">
             {console.log(user)}
             <form onSubmit={event => handleSubmit(event)}>
                 <label>
