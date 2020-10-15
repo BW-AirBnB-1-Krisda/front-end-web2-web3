@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { axiosWithAuth } from "../util/axiosWithAuth"
+import { login } from "../actions";
+import { connect } from "react-redux";
 
 
 const initialLoginForm = {
@@ -22,16 +23,9 @@ function UserLogin(props) {
 
     const submitLoginForm = (e) => {
         e.preventDefault()
-        axiosWithAuth()
-        .post("/login", userLogin)
-        .then((res) => {
-            console.log("Successful login: ", res.data)
-            localStorage.setItem("token", res.data.payload)
-            props.history.push("/dashboard")
-        })
-        .catch((err) => {
-            console.log("Failed to login: ", err)
-        })
+        props.login(user)
+        props.history.push("/listings")
+        
     }
 
     return (
@@ -74,4 +68,16 @@ function UserLogin(props) {
     )
 }
 
-export default UserLogin
+const mapStateToProps = (state) => {
+    return {
+        listings: state.listings,
+        isFetching: state.isFetching,
+        error: state.error
+    }
+}
+
+const mapDispatchToProps = {
+    login
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserLogin)
