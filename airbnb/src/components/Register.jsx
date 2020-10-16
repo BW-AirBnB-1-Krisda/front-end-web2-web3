@@ -53,9 +53,10 @@ function Register() {
           />
         </label>
         </div>
-        <button className="submit">Create Account</button>
+        <button className="submit">Submit</button>
         <div className="loginButton">
                 <Link to="/">
+                    <h5>Already a Member?</h5>
                   <button>Login</button>
                 </Link>
               </div>
