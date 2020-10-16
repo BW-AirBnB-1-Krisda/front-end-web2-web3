@@ -1,60 +1,61 @@
 import React, { useState } from "react";
-import "./Style.css";
+import Register from "./Register"
+import { Link } from "react-router-dom";
+import "../App.css";
 
-function Login () {
-    const [user, setUser] = useState({username: "", password: ""});
+function Login() {
+  const [user, setUser] = useState({ username: "", password: "" });
 
-    const handleNameChange = event => {
-        setUser({...user, username: event.target.value});
-    };
+  const handleNameChange = event => {
+    setUser({ ...user, [event.target.name]: event.target.value });
+  };
 
-    const handlePasswordChange = event => {
-        setUser({...user, password: event.target.value});
-    };
+  const handleSubmit = event => {
+    event.preventDefault();
+    console.log(user.name);
+    console.log(user.password);
+  };
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        console.log(user.username);
-        console.log(user.password);
-    };
-
-    return (
-        <div className="base-container">
-            <div className="header"></div>
-                <div className="content">
-                <div className="image">
-                <img src="../components/airbnb.jpg" alt="" />
-          </div>
-            <form onSubmit={event => handleSubmit(event)}>
-                <div className="form-group">
-                    <label>
-                        Username:
-                        <input
-                            type="text"
-                            name="username"
-                            onChange={event => handleNameChange(event)}
-                        />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
-                        Password:
-                        <input
-                            type="text"
-                            name="password"
-                            onChange={event => handlePasswordChange(event)}
-                        />
-                    </label>
-                </div>
-                <div className="footer">
-                    <button type="button" className="btn">
-                        Login
-                    </button>
-                    </div>
-            </form>
-            </div>
+  return (
+    <div className="App">
+      {console.log(user)}
+      <form onSubmit={event => handleSubmit(event)}>
+        <div className="username"> 
+        <label>
+          Username: 
+          <input
+            type="text"
+            name="name"
+            placeholder="username"
+            onChange={event => handleNameChange(event)}
+          />
+        </label>
         </div>
-    )
+        <div className="password">
+        <label>
+          Password: 
+          <input
+            type="text"
+            name="password"
+            placeholder="password"
+            onChange={event => handleNameChange(event)}
+          />
+        </label>
+        </div>
+        <div>
+        <button className="submit">Submit</button>
+        </div>
+        <div className="nav-links">
+              <div className="registerButton">
+                <Link to="/Register">
+                  <h5>New User?</h5>
+                  <button>Create Account</button>
+                </Link>
+              </div>
+          </div>
+      </form>
+    </div>
+  );
 }
 
 export default Login;
