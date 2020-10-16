@@ -31,7 +31,7 @@ function UserLogin(props) {
     }
 
     return (
-        <div className="App">
+        <div className="login">
         <form onSubmit={submitLoginForm}>
 
         <div className="username"> 
