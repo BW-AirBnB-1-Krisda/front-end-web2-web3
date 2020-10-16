@@ -81,7 +81,7 @@ export const register = (user, history) => (dispatch) => {
             payload: res.data
         })
 
-        history.push("/listings")
+        history.push("/login")
     })
     .catch((err) => {
         console.log("Register NOT successful", err.message)
