@@ -17,7 +17,7 @@ function Login() {
   };
 
   return (
-    <div className="App">
+    <div className="login">
       {console.log(user)}
       <form onSubmit={event => handleSubmit(event)}>
         <div className="username"> 

@@ -11,17 +11,6 @@ body{
   font-family: "Open Sans", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -47,8 +36,8 @@ body{
 }
 .login {
   width: 100%;
-  height: 40em;
-  min-height: 44em;
+  height: 20em;
+  min-height: 24em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,7 +45,6 @@ body{
   margin-top: 5px;
   position: relative;
   z-index: 99;
-
 }
 .container {
   display: flex;
@@ -64,13 +52,12 @@ body{
   justify-content: center;
   align-items: center;
   width: 300px;
-  margin-top: 30px;
+  margin-top: 20px;
   background-color: #fff;
   box-shadow: 5px 5px 20px 2px #634A39;
   border-radius: 4px;
   position: relative;
   z-index: 99;
-  height: 100%;
   z-index: 99;
   padding: 17px 10px;
   transition: transform 200ms ease-in-out;
@@ -80,7 +67,7 @@ button {
   font-size: 21px;
   padding: 5px 20px;
   border: 0;
-  background-color: #3498db;
+  background-color: #6AD5CB;
   color: #fff;
   border-radius: 3px;
   transition: all 250ms ease-in-out;
@@ -96,7 +83,7 @@ button:focus {
   margin-top: 10px;
 }
 .nav-links{
-  margin-top: 75%;
+  margin-top: 35%;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -131,5 +118,5 @@ h5{
   text-decoration: none;
 }
 img {
-  width: 150px;
+  width: 350px;
 }

@@ -8,7 +8,7 @@ import "./App.css";
 
 function App() {
   return (
-      <div className="login">
+      <div className="App">
         <div className="container">
         <img src={logo}></img>
           <Route exact path="/" render={() => <Login />} />  
