@@ -23,8 +23,8 @@ function UserLogin(props) {
 
     const submitLoginForm = (e) => {
         e.preventDefault()
-        props.login(userLogin)
-        props.history.push("/listings")
+        props.login(userLogin, props.history)
+        // props.history.push("/listings")
         
     }
 

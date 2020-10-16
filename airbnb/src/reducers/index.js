@@ -53,14 +53,23 @@ export const reducer = (state = initialState, action) => {
             ]
         }
 
-        case actions.LOGIN:
+        case actions.LOGIN_START:
 
         console.log("Login: reducer")
 
         return {
             ...state,
+            isFetching: true,
             user: action.payload
         }
+
+        case actions.LOGIN_SUCCESSFUL:
+            return {
+                ...state,
+                isFetching: false,
+                user: {
+                    ...state.user
+            }}
 
         default:
             return state
