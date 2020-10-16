@@ -24,7 +24,6 @@ function UserLogin(props) {
     const submitLoginForm = (e) => {
         e.preventDefault()
         props.login(userLogin, props.history)
-        // props.history.push("/listings")
         
     }
 
@@ -71,6 +70,7 @@ function UserLogin(props) {
 const mapStateToProps = (state) => {
     return {
         listings: state.listings,
+        user: state.user,
         isFetching: state.isFetching,
         error: state.error
     }

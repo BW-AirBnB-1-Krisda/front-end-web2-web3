@@ -1,5 +1,4 @@
 import { axiosWithAuth } from "../util/axiosWithAuth"
-import { useHistory } from "react-router-dom"
 
 export const GET_LISTINGS = "GET_LISTINGS"
 export const ADD_LISTING = "ADD_LISTING"
@@ -12,6 +11,9 @@ export const LISTING_FAILED_TO_FETCH = "LISTING_FAILED_TO_FETCH"
 
 export const LOGIN_START = "LOGIN_START"
 export const LOGIN_SUCCESSFUL = "LOGIN_SUCCESSFUL"
+
+export const REGISTER_START = "REGISTER_START"
+export const REGISTER_SUCCESSFUL = "REGISTER_SUCCESSFUL"
 
 export const getListings = () => (dispatch) => {
 
@@ -40,7 +42,7 @@ export const getListings = () => (dispatch) => {
 
 export const login = (user, history) => (dispatch) => {
 
-    console.log("Action creator Login: ", dispatch)
+    console.log("Action creator login: ", dispatch)
 
     dispatch( { type: LOGIN_START } )
 
@@ -59,6 +61,30 @@ export const login = (user, history) => (dispatch) => {
     })
     .catch((err) => {
         console.log("Please register in order to log in", err.message)
+    })
+}
+
+export const register = (user, history) => (dispatch) => {
+
+    console.log("Action creator register: ", dispatch)
+
+    dispatch ( { type: REGISTER_START } )
+
+    axiosWithAuth()
+    .post("/register", user)
+    .then((res) => {
+        console.log("Action creator register POST: ", res.data)
+        localStorage.setItem("token", res.data.token)
+
+        dispatch({
+            type: REGISTER_SUCCESSFUL,
+            payload: res.data
+        })
+
+        history.push("/listings")
+    })
+    .catch((err) => {
+        console.log("Register NOT successful", err.message)
     })
 }
 

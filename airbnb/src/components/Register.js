@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { register } from "../actions";
+import { connect } from "react-redux";
 
 const initialRegisterForm = {
 
@@ -7,7 +9,7 @@ const initialRegisterForm = {
     email: ""
 }
 
-function Register () {
+function Register (props) {
 
     const [userRegister, setUserRegister] = useState(initialRegisterForm)
 
@@ -21,8 +23,7 @@ function Register () {
 
     const submitRegisterForm = (e) => {
         e.preventDefault()
-        // props.register(userRegister)
-        props.history.push("/listings")
+        props.register(userRegister, props.history)
         
     }
 
@@ -72,4 +73,17 @@ function Register () {
     )
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+    return {
+        listings: state.listings,
+        user: state.user,
+        isFetching: state.isFetching,
+        error: state.error
+    }
+}
+
+const mapDispatchToProps = {
+    register
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

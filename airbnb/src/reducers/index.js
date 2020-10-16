@@ -55,7 +55,7 @@ export const reducer = (state = initialState, action) => {
 
         case actions.LOGIN_START:
 
-        console.log("Login: reducer")
+        console.log("Login start: reducer")
 
         return {
             ...state,
@@ -64,12 +64,38 @@ export const reducer = (state = initialState, action) => {
         }
 
         case actions.LOGIN_SUCCESSFUL:
+
+        console.log("Login successful: reducer")
+
             return {
                 ...state,
                 isFetching: false,
                 user: {
                     ...state.user
-            }}
+            }
+        }
+
+        case actions.REGISTER_START:
+
+        console.log("Register start: reducer")
+
+        return {
+            ...state,
+            isFetching: true,
+            user: action.payload
+        }
+
+        case actions.REGISTER_SUCCESSFUL:
+
+        console.log("Register successful: reducer")
+
+        return {
+            ...state,
+            isFetching: false,
+            user: {
+                ...state.user
+            }
+        }
 
         default:
             return state
