@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { login } from "../actions";
 import { connect } from "react-redux";
 
+import { Link } from "react-router-dom";
+import "../App.css";
+
 
 const initialLoginForm = {
 
@@ -28,8 +31,10 @@ function UserLogin(props) {
     }
 
     return (
+        <div className="App">
         <form onSubmit={submitLoginForm}>
 
+        <div className="username"> 
             <label>Username:</label>
                 <input
                 minLength='8'
@@ -40,7 +45,9 @@ function UserLogin(props) {
                 value={userLogin.username}
                 onChange={handleInputChange}
                 />
+                </div>
 
+            <div className="password">
             <label>Password:</label>
                 <input
                 placeholder='password'
@@ -50,20 +57,23 @@ function UserLogin(props) {
                 value={userLogin.password}
                 onChange={handleInputChange}
                 />
+                </div>
 
             <div>
-            <button>LOGIN</button>
+            <button className="submit">LOGIN</button>
             </div>
-            <div>
-
-            <button>FORGOT PASSWORD</button>
-            </div>
-            
-            <a>Don't have an account?</a>
-            
-            <button>Create account</button>
-
+           
+            <div className="nav-links">
+               <div className="registerButton">
+                 <Link to="/register">
+                   <h5>New User?</h5>
+                   <button>Create Account</button>
+                 </Link>
+               </div>
+           </div>
+  
         </form>
+        </div>
     )
 }
 

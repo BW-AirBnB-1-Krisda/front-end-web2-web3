@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { register } from "../actions";
 import { connect } from "react-redux";
 
+import { Link } from "react-router-dom";
+import "../App.css";
+
 const initialRegisterForm = {
 
     username: "",
@@ -28,47 +31,53 @@ function Register (props) {
     }
 
     return (
-        <div>
-            <div>Register</div>
-                <div>
-                <div>
-          </div>
+        <div className="App">
             <form onSubmit={submitRegisterForm}>
-                <div>
+            <div className="username">
                     <label>
                         Username:
                         <input
                             type="text"
                             name="username"
+                            placeholder="Username"
                             onChange={handleInputChange}
                         />
                     </label>
                 </div>
-                <div>
+                <div className="password">
                     <label>
                         Password:
                         <input
                             type="text"
                             name="password"
+                            placeholder="Password"
                             onChange={handleInputChange}
                         />
                     </label>
                 </div>
-                <div>
+                <div className="email">
                     <label>
                         Email:
                         <input
                             type="text"
                             name="email"
+                            placeholder="Email"
                             onChange={handleInputChange}
                         />
                     </label>
                 </div>
-                    <button>
+                    <button className="submit">
                         Register
                     </button>
+
+                    <div className="loginButton">
+                <Link to="/login">
+                    <h5>Already a Member?</h5>
+                  <button>Login</button>
+                </Link>
+              </div>
+            
             </form>
-            </div>
         </div>
     )
 }
