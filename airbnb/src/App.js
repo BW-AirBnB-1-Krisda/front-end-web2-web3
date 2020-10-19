@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import './App.css';
 
 import UserLogin from "./components/UserLogin";
@@ -8,6 +8,7 @@ import Listings from "./components/Listings";
 import PrivateRoute from "./components/PrivateRoute";
 import AddListing from './components/AddListing';
 import Listing from "./components/Listing";
+import EditListing from "./components/EditListing";
 
 import logo from "../src/Mock-Logo.png"
 
@@ -26,6 +27,7 @@ function App() {
       <PrivateRoute exact path="/listings" component={Listings} />
       <PrivateRoute exact path="/add-listing" component={AddListing} />
       <PrivateRoute exact path="/listings/:id" component={Listing} />
+      <PrivateRoute exact path="/edit-listing/:id" component={EditListing} />
       </Switch>
       <nav>
         </nav>

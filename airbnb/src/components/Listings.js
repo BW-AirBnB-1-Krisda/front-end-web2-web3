@@ -9,7 +9,7 @@ const Listings = (props) => {
     const [listingsList, setListingsList] = useState([])
 
     useEffect(() => {
-        getListings()
+        props.getListings()
     }, [listingsList] )
 
     return (

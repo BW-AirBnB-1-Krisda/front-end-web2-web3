@@ -143,9 +143,28 @@ export const deleteListing = (id, history) => (dispatch) => {
         console.log("Action creator deleteListing DELETE: ", res.data)
         getListings()
         history.push("/listings")
-        alert("Your listing has successfully been deleted")
+        alert("Your listing has successfully been deleted!")
     })
     .catch((err) => {
         console.log("deleteListing NOT successful: ", err)
+    })
+}
+
+export const editListingAction = (id, listing, history) => (dispatch) => {
+
+    console.log( { type: EDIT_LISTING } )
+
+    dispatch ( { type: EDIT_LISTING } )
+
+    axiosWithAuth()
+    .put(`/listings/${id}`, listing)
+    .then((res) => {
+        console.log("Action creator editListingAction PUT: ", res.data)
+        getListings()
+        history.push("/listings")
+        alert("Your listing has successfully been edited!")
+    })
+    .catch((err) => {
+        console.log("editListingAction NOT successful: ", err)
     })
 }
