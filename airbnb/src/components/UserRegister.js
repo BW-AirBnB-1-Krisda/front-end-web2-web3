@@ -12,7 +12,7 @@ const initialRegisterForm = {
     email: ""
 }
 
-function Register (props) {
+function UserRegister (props) {
 
     const [userRegister, setUserRegister] = useState(initialRegisterForm)
 
@@ -95,4 +95,4 @@ const mapDispatchToProps = {
     register
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(UserRegister)

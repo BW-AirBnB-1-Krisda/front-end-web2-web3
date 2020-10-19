@@ -88,3 +88,20 @@ export const register = (user, history) => (dispatch) => {
     })
 }
 
+export const addListing = (listing, history) => (dispatch) => {
+
+    console.log("Action creator addListing: ", dispatch)
+
+    dispatch ( { type: ADD_LISTING } )
+
+    axiosWithAuth()
+    .post("/listings", listing)
+    .then((res) => {
+        console.log("Action creator addListing success POST: ", res.data)
+        getListings()
+        history.push("/listings")
+    })
+    .catch((err) => {
+        console.log("AddListing NOT successful: ", err)
+    })
+}

@@ -3,13 +3,15 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
 import './App.css';
 
 import UserLogin from "./components/UserLogin";
-import Register from "./components/Register";
+import UserRegister from "./components/UserRegister";
 import Listings from "./components/Listings";
 import PrivateRoute from "./components/PrivateRoute";
+import AddListing from './components/AddListing';
 
 import logo from "../src/Mock-Logo.png"
 
 import { connect } from "react-redux";
+
 
 function App() {
   return (
@@ -19,8 +21,9 @@ function App() {
         <img src={logo}></img>
       <Switch>
       <Route exact path="/login" component={UserLogin} />
-      <Route exact path="/register" component={Register} />
+      <Route exact path="/register" component={UserRegister} />
       <PrivateRoute exact path="/listings" component={Listings} />
+      <PrivateRoute exact path="/add-listing" component={AddListing} />
       </Switch>
       <nav>
         </nav>

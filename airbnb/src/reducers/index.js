@@ -2,7 +2,17 @@ import * as actions from "../actions";
 
 const initialState = {
 
-    listings: [],
+    listings: [
+        {
+            id: 1,
+            city: "New York",
+            room_type: "Hotel Room",
+            security_deposit: 100, //float
+            guests_included: 2, //int
+            min_nights: 2, //int
+            // price: 100,
+        }
+    ],
     user: {},
     isFetching: "",
     error: ""
@@ -45,11 +55,21 @@ export const reducer = (state = initialState, action) => {
 
         console.log("Add listing: reducer")
 
+        const newListing = {
+            id: Date.now(),
+            city: action.payload.city,
+            room_type: action.payload.room_type,
+            security_deposit: action.payload.security_deposit, 
+            guests_included: action.payload.guests_included,
+            min_nights: action.payload.min_nights,
+            // price: ,
+        }
+
         return {
             ...state,
             listings: [
                 ...state.listings,
-                action.payload
+                newListing
             ]
         }
 
