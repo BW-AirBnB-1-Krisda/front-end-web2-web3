@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { getListings } from "../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Listing from "./Listing";
+import ListingCard from "./ListingCard";
 
 const Listings = (props) => {
 
@@ -25,7 +25,7 @@ const Listings = (props) => {
 
             {listingsList.map(listing => (
                 <Link key={listing.id} to={`/listings/${listing.id}`}>
-                    <Listing listing={listing}/>
+                    <ListingCard listing={listing}/>
                 </Link>
             ))}
           

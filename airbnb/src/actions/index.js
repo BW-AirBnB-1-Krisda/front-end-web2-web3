@@ -1,6 +1,7 @@
 import { axiosWithAuth } from "../util/axiosWithAuth"
 
 export const GET_LISTINGS = "GET_LISTINGS"
+export const GET_LISTING_CARD = "GET_LISTING_CARD"
 export const ADD_LISTING = "ADD_LISTING"
 export const DELETE_LISTING = "DELETE_LISTING"
 export const EDIT_LISTING = "EDIT_LISTING"
@@ -38,6 +39,30 @@ export const getListings = () => (dispatch) => {
         })
     })
 
+}
+
+export const getListingCard = (id) => (dispatch) => {
+
+    console.log("Get listing card action creator: ", dispatch)
+
+    dispatch ( { type: LISTING_PROCESSING } )
+
+    axiosWithAuth()
+    .get(`/listings/${id}`)
+    .then((res) => {
+        console.log("Action: getListingCard: ", res.data)
+        dispatch({
+            type: LISTING_FETCHED,
+            payload: res.data
+        })
+    })
+    .catch((err) => {
+        console.log("Action: FAIL to getListingCard: ", err)
+        dispatch({
+            type: LISTING_FAILED_TO_FETCH,
+            payload: err.message
+        })
+    })
 }
 
 export const login = (user, history) => (dispatch) => {
@@ -103,5 +128,24 @@ export const addListing = (listing, history) => (dispatch) => {
     })
     .catch((err) => {
         console.log("AddListing NOT successful: ", err)
+    })
+}
+
+export const deleteListing = (id, history) => (dispatch) => {
+
+    console.log("Action creator deleteListing: ", dispatch)
+
+    dispatch ( { type: DELETE_LISTING } )
+
+    axiosWithAuth()
+    .delete(`/listings/${id}`)
+    .then((res) => {
+        console.log("Action creator deleteListing DELETE: ", res.data)
+        getListings()
+        history.push("/listings")
+        alert("Your listing has successfully been deleted")
+    })
+    .catch((err) => {
+        console.log("deleteListing NOT successful: ", err)
     })
 }

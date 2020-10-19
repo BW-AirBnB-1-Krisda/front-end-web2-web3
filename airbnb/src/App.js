@@ -7,6 +7,7 @@ import UserRegister from "./components/UserRegister";
 import Listings from "./components/Listings";
 import PrivateRoute from "./components/PrivateRoute";
 import AddListing from './components/AddListing';
+import Listing from "./components/Listing";
 
 import logo from "../src/Mock-Logo.png"
 
@@ -24,6 +25,7 @@ function App() {
       <Route exact path="/register" component={UserRegister} />
       <PrivateRoute exact path="/listings" component={Listings} />
       <PrivateRoute exact path="/add-listing" component={AddListing} />
+      <PrivateRoute exact path="/listings/:id" component={Listing} />
       </Switch>
       <nav>
         </nav>
