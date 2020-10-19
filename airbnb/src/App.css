@@ -127,9 +127,19 @@ button:disabled {
   margin: 20px 0;
   border: 3px solid black;
   border-radius: 5%;
-  width: 200px;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-shadow: 5px 5px 5px #634A39;
+}
+ul, li {
+  margin: 0;
+  padding: 5px;
+  list-style: none;
+  align-items: left;
+}
+.listing img {
+  border: 3px solid black;
 }

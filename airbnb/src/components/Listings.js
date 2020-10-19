@@ -1,28 +1,23 @@
-import { React, useState } from "react"
-import "../App.css";
+import React, { useState, useEffect } from "react"
+import axios from "axios";
+import Listing from "./Listing"
 
-function Listings(props) {
+const Listings = (props) => {
 
-    const [userRegister, setUserRegister] = useState({
-        username: "",
-        password: "",
-        email: "",
-        terms: ""
-    })
     return (
         <div>
-            <div className="listing">
-                <h1>Listing</h1>
-            </div>
 
+{/* <a href="#" onClick={this.handleClick}></a> */}
             <a
-                href="/login"
-                onClick={() => window.localStorage.clear()}
+            href="/login"
+            onClick={() => window.localStorage.clear()} 
             >
-                           Log out</a>
-
+            Log out</a>
+            <Listing />
         </div>
+
     )
+
 }
 
 export default Listings
