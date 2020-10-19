@@ -22,9 +22,7 @@ function Listings(props) {
                            Log out</a>
 
         </div>
-
     )
-
 }
 
 export default Listings
