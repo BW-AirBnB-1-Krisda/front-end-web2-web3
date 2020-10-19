@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import "../App.css";
 
-function UserLogin() {
+function UserLogin(props) {
 
     const [userLogin, setUserLogin] = useState({
         username: "",
@@ -44,12 +44,8 @@ function UserLogin() {
 
     const submitLoginForm = (e) => {
         e.preventDefault()
-        setUserLogin({
-            username: "",
-            password: ""
-        })
-        console.log(userLogin)
-    }
+        props.login(userLogin, props.history)
+        }
 
     const formSchema = Yup.object().shape({
         username: Yup

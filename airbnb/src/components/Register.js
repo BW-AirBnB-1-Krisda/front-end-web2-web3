@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import "../App.css";
 
-function Register () {
+function Register (props) {
 
     const [userRegister, setUserRegister] = useState({
         username: "",
@@ -65,14 +65,8 @@ function Register () {
 
     const submitRegisterForm = (e) => {
         e.preventDefault()
-        setUserRegister({
-            username: "",
-            password: "",
-            email: "",
-            terms: ""
-        })
-        console.log(setUserRegister)
-    }
+        props.register(userRegister, props.history)
+        }
 
     useEffect(() => {
         formSchema.isValid(userRegister).then((valid) => {

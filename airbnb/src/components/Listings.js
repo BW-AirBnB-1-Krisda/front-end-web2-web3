@@ -1,18 +1,26 @@
-import React from "react"
+import { React, useState } from "react"
+import "../App.css";
 
-const Listings = (props) => {
+function Listings(props) {
 
+    const [userRegister, setUserRegister] = useState({
+        username: "",
+        password: "",
+        email: "",
+        terms: ""
+    })
     return (
         <div>
+            <div className="listing">
+                <h1>Listing</h1>
+            </div>
 
-{/* <a href="#" onClick={this.handleClick}></a> */}
             <a
-            href="/login"
-            onClick={() => window.localStorage.clear()} 
+                href="/login"
+                onClick={() => window.localStorage.clear()}
             >
-            Log out</a>
-            <h1>Listings go here with the functionality to get all the listings, add a new listing, edit an existing listing and get the optimal price for the listing, and delete the listing</h1>
-            
+                           Log out</a>
+
         </div>
 
     )
