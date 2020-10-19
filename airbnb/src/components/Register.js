@@ -93,6 +93,7 @@ function Register () {
                             placeholder="username"
                             value={userRegister.username}
                             onChange={handleInputChange}
+                            data-cy="username"
                         />
                         {errors.username.length > 0 ? <p className="error">{errors.username}</p> : null}
                     </label>
@@ -105,6 +106,7 @@ function Register () {
                             placeholder="password"
                             value={userRegister.password}
                             onChange={handleInputChange}
+                            data-cy="password"
                         />
                         {errors.password.length > 0 ? <p className="error">{errors.password}</p> : null}
                     </label>
@@ -116,6 +118,7 @@ function Register () {
                             placeholder="email"
                             value={userRegister.email}
                             onChange={handleInputChange}
+                            data-cy="email"
                         />
                         {errors.email.length > 0 ? <p className="error">{errors.email}</p> : null}
                     </label>
@@ -126,9 +129,14 @@ function Register () {
                             name="terms"
                             checked={userRegister.terms}
                             onChange={handleInputChange}
+                            data-cy="terms"
                             />
                         </label>
-                    <button className="submit" type="submit" disabled={buttonIsDisabled} >
+                    <button 
+                    className="submit" 
+                    type="submit" 
+                    disabled={buttonIsDisabled}
+                    data-cy="submit" >
                         Register
                     </button>
                     <div className="loginButton">

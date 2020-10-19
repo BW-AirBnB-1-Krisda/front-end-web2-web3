@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { login } from "../actions";
 import { connect } from "react-redux";
 import * as Yup from "yup";
@@ -73,29 +73,31 @@ function UserLogin() {
             <label htmlFor="username">
                 Username:
                 <input 
-                placeholder='username'
-                id='username'
+                placeholder="username"
+                id="username"
                 name="username"
-                type='text'
+                type="text"
                 value={userLogin.username}
                 onChange={handleInputChange}
+                data-cy="username"
             />
                 {errors.username.length > 0 ? <p className="error">{errors.username}</p> : null}
             </label>
             <label htmlFor="password">
                 Password:
                 <input htmlFor="password"
-                placeholder='password'
-                id='password'
-                name='password'
-                type='text'
+                placeholder="password"
+                id="password"
+                name="password"
+                type="text"
                 value={userLogin.password}
                 onChange={handleInputChange}
+                data-cy="password"
                 />
                 {errors.password.length > 0 ? <p className="error">{errors.password}</p> : null}
             </label>
             <div>
-            <button className="submit" type="submit" disabled={buttonIsDisabled} >LOGIN</button>
+            <button className="submit" type="submit" disabled={buttonIsDisabled} data-cy="submit" >LOGIN</button>
             </div>
             <div className="nav-links">
                <div className="registerButton">
