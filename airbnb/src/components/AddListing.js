@@ -3,13 +3,13 @@ import { addListing } from "../actions";
 import { connect } from "react-redux";
 
 const initialAddListingForm = {
-    // id: 0,
+    id: "",
     city: "",
     room_type: "",
     security_deposit: 0, //float
     guests_included: 0, //int
     min_nights: 0, //int
-    // price: 0
+    price: ""
 }
 
 

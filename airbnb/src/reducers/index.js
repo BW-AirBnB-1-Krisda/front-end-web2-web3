@@ -2,16 +2,17 @@ import * as actions from "../actions";
 
 const initialState = {
 
+    id: "",
     listings: [
-        {
-            id: 1,
-            city: "New York",
-            room_type: "Hotel Room",
-            security_deposit: 100, //float
-            guests_included: 2, //int
-            min_nights: 2, //int
-            // price: 100,
-        }
+        // {
+        //     id: 1,
+        //     city: "New York",
+        //     room_type: "Hotel Room",
+        //     security_deposit: 100, //float
+        //     guests_included: 2, //int
+        //     min_nights: 2, //int
+        //     // price: 100,
+        // }
     ],
     user: {},
     isFetching: "",
@@ -51,26 +52,27 @@ export const reducer = (state = initialState, action) => {
             isFetching: false
         }
 
-        case actions.ADD_LISTING:
+        case actions.ADD_LISTING_START:
 
         console.log("Add listing: reducer")
 
-        const newListing = {
-            id: Date.now(),
-            city: action.payload.city,
-            room_type: action.payload.room_type,
-            security_deposit: action.payload.security_deposit, 
-            guests_included: action.payload.guests_included,
-            min_nights: action.payload.min_nights,
-            // price: ,
+        return {
+            ...state,
+            listings: action.payload,
+            isFetching: true
         }
+
+        case actions.ADD_LISTING_SUCCESSFUL:
+
+        console.log("Add listing successful: reducer")
 
         return {
             ...state,
+            id: Date.now(),
             listings: [
-                ...state.listings,
-                newListing
-            ]
+                ...state.listings
+            ],
+            isFetching: false
         }
 
         case actions.LOGIN_START:
@@ -79,8 +81,8 @@ export const reducer = (state = initialState, action) => {
 
         return {
             ...state,
-            isFetching: true,
-            user: action.payload
+            user: action.payload,
+            isFetching: true
         }
 
         case actions.LOGIN_SUCCESSFUL:
@@ -89,10 +91,10 @@ export const reducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                isFetching: false,
                 user: {
                     ...state.user
-            }
+            },
+            isFetching: false
         }
 
         case actions.REGISTER_START:
@@ -101,8 +103,8 @@ export const reducer = (state = initialState, action) => {
 
         return {
             ...state,
-            isFetching: true,
-            user: action.payload
+            user: action.payload,
+            isFetching: true
         }
 
         case actions.REGISTER_SUCCESSFUL:
@@ -111,10 +113,10 @@ export const reducer = (state = initialState, action) => {
 
         return {
             ...state,
-            isFetching: false,
             user: {
                 ...state.user
-            }
+            },
+            isFetching: false
         }
 
         default:

@@ -21,7 +21,7 @@ const Listings = (props) => {
             >
             Log out</a>
             {/* <h1>Listings go here with the functionality to get all the listings, add a new listing, edit an existing listing and get the optimal price for the listing, and delete the listing</h1> */}
-            <button>Add new listing</button>
+            <button onClick={() => props.history.push("/add-listing")}>Add new listing</button>
 
             {listingsList.map(listing => (
                 <Link key={listing.id} to={`/listings/${listing.id}`}>
