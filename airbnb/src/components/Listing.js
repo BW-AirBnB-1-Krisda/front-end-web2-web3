@@ -10,10 +10,10 @@ const Listing = (props) => {
         <div className="attributes">
             <ul>
                 <li>Room Type: {props.room_type}</li>
-                <li>Security Deposit: {props.security_deposit}</li>
+                <li>Security Deposit: ${props.security_deposit}</li>
                 <li>Max Guests: {props.guests_included}</li>
                 <li>Min Number of Nights: {props.min_nights}</li>
-                <li>Price: {props.price}</li>
+                <li>Price: ${props.price}</li>
             </ul>
         </div>
         <button className="addbutton">
