@@ -143,3 +143,8 @@ ul, li {
 .listing img {
   border: 3px solid black;
 }
+
+.error {
+  font-size: 1.2rem;
+  color: red;
+}

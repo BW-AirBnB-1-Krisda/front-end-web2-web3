@@ -34,9 +34,8 @@ const Listings = (props) => {
             </form>
             {listingData.map((id) => {
                 return <Listing url={id} city={city} />
-            })};
+            })}
 
-{/* <a href="#" onClick={this.handleClick}></a> */}
             <a
             href="/login"
             onClick={() => window.localStorage.clear()} 

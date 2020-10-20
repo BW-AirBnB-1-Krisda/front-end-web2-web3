@@ -13,38 +13,38 @@ function Register (props) {
         username: "",
         password: "",
         email: "",
-        terms: ""
+        // terms: ""
     })
 
     const [errors, setErrors] = useState({
         username: "",
         password: "",
         email: "",
-        terms: ""
+        // terms: ""
       });
 
     const [buttonIsDisabled, setButtonIsDisabled] = useState(true);
 
     const validateChange = (e) => {
         Yup
-          .reach(formSchema, e.target.username)
-          .validate(e.target.value)
+          .reach(formSchema, e.target.name)
+          .validate(e.target.name ? e.target.value : null)
           .then((valid) => {
-            setErrors({ ...errors, [e.target.username]: "" });
+            setErrors({ ...errors, [e.target.name]: "" });
           })
           .catch((err) => {
-            setErrors({ ...errors, [e.target.username]: err.errors[0] });
+            setErrors({ ...errors, [e.target.name]: err.errors[0] });
           });
       };
 
     const handleInputChange = (e) => {
         e.persist()
-        const newUserRegister = {
-            ...userRegister,
-            [e.target.name] : e.target.type === "checkbox" ? e.target.checked : e.target.value
-        };
+        // const newUserRegister = {
+        //     ...userRegister,
+        //     [e.target.name] : e.target.type === "checkbox" ? e.target.checked : e.target.value
+        // };
         validateChange(e);
-        setUserRegister(newUserRegister);
+        setUserRegister({ ...userRegister, [e.target.name] : e.target.value });
     };
 
     const formSchema = Yup.object().shape({
@@ -58,9 +58,9 @@ function Register (props) {
         .string()
         .email("Must be a valid email address.")
         .required("Email is Required"),
-        terms: Yup
-        .boolean()
-        .oneOf([true])
+        // terms: Yup
+        // .boolean()
+        // .oneOf([true])
     });
 
     const submitRegisterForm = (e) => {
@@ -121,8 +121,8 @@ function Register (props) {
                             <input 
                             type="checkbox"
                             name="terms"
-                            checked={userRegister.terms}
-                            onChange={handleInputChange}
+                            // checked={userRegister.terms}
+                            // onChange={handleInputChange}
                             data-cy="terms"
                             />
                         </label>
