@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import './App.css';
 
 import UserLogin from "./components/UserLogin";
@@ -14,9 +14,9 @@ import { connect } from "react-redux";
 function App() {
   return (
     <Router>
-     <div className="login">
+     <div className="App">
         <div className="container">
-        <img src={logo}></img>
+        <img src={logo} alt="logo"></img>
       <Switch>
       <Route exact path="/login" component={UserLogin} />
       <Route exact path="/register" component={Register} />
