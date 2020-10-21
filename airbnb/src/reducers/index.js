@@ -20,6 +20,12 @@ const initialState = {
         password: "",
         email: "",
         message: "",
+        token: "",
+
+        user: {
+            username: "",
+            id: ""
+        }
     },
     isFetching: "",
     error: ""
@@ -76,7 +82,7 @@ export const reducer = (state = initialState, action) => {
             ...state,
             listings: [{
                 ...state.listings,
-                id: state.listings.id
+                id: action.payload.id
             }],
             isFetching: false
         }
@@ -87,7 +93,7 @@ export const reducer = (state = initialState, action) => {
 
         return {
             ...state,
-            user: action.payload,
+            // user: action.payload,
             isFetching: true
         }
 
@@ -99,10 +105,14 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 user: {
                     ...state.user,
-                    message: action.payload.message
+                    message: action.payload.message,
+                    token: action.payload.token,
+                    user: {
+                        username: action.payload.user.username,
+                        id: action.payload.user.id
             },
             isFetching: false
-        }
+        }}
 
         case actions.REGISTER_START:
 

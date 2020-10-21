@@ -112,7 +112,7 @@ export const getListings = (id) => (dispatch) => {
 
 //ACTION CREATOR : ADD A LISTING
 
-export const addListing = (listings, history) => (dispatch) => {
+export const addListing = (listings, history, id) => (dispatch) => {
   console.log("Action creator addListing: ", dispatch);
 
   dispatch({ type: ADD_LISTING_START });
@@ -124,7 +124,7 @@ export const addListing = (listings, history) => (dispatch) => {
     .then((res) => {
       console.log("Action creator addListing DS API POST success: ", res.data);
       axiosWithAuth()
-        .post(`/listings/user/4`, res.data)
+        .post(`/listings/user/${id}`, res.data)
         .then((response) => {
           console.log(
             "Action creator addListing success POST: ",

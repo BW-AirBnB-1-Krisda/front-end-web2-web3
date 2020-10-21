@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { addListing } from "../actions";
 import { connect } from "react-redux";
 
+import { useParams } from "react-router-dom";
+
 const initialAddListingForm = {
     // id: "",
     city: "",
@@ -17,6 +19,8 @@ const AddListing = (props) => {
 
 const [newListing, setNewListing] = useState(initialAddListingForm)
 
+const { id } = useParams();
+
 const handleInputChange = (e) => {
     e.persist()
     setNewListing({
@@ -27,7 +31,7 @@ const handleInputChange = (e) => {
 
 const submitNewListingForm = (e) => {
     e.preventDefault()
-    props.addListing(newListing, props.history)
+    props.addListing(newListing, props.history, id)
     
 }
 

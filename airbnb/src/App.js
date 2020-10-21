@@ -25,7 +25,7 @@ function App() {
       <Route exact path="/register" component={UserRegister} />
       <PrivateRoute exact path="/listings/user/:id" component={Listings} />
       <PrivateRoute exact path="/add-listing" component={AddListing} />
-      <PrivateRoute exact path="/edit-listing/:id" component={EditListing} />
+      {/* <PrivateRoute exact path="/edit-listing/:id" component={EditListing} /> */}
       </Switch>
       <nav>
         </nav>
