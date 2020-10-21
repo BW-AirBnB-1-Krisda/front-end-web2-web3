@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ControlPointIcon from '@material-ui/icons/ControlPoint';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const Listing = (props) => {
-
+    const [listData, setListData] = useState([]);
+    console.log(listData)
+    const addNewListing = (listing) => {
+        setListData([...listData, listing])
+    }
     return (
         <div className="listing" key={props.key}>
         <h1>{props.city}</h1>
@@ -16,7 +21,7 @@ const Listing = (props) => {
                 <li>Price: ${props.price}</li>
             </ul>
         </div>
-        <button className="addbutton">
+        <button className="addbutton" onClick={addNewListing}>
             <div className="control">
                 <ControlPointIcon color="white" />
             </div>

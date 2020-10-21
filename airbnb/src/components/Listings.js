@@ -12,7 +12,16 @@ const Listings = (props) => {
           guests_included: 4,
           min_nights: 2,
           price: 700
-        }
+        },
+        {
+            id: 1,
+            city: "Chicago",
+            room_type: "Queen",
+            security_deposit: "400",
+            guests_included: 4,
+            min_nights: 3,
+            price: 900
+          }
       ]);
     const [city, setCity] = useState(["St. Louis"]);
     console.log(listingData)
@@ -42,15 +51,16 @@ const Listings = (props) => {
                     />
                 </div>
             </form>
-            {listingData.map((id) => {
+            {listingData.map((list) => {
+                console.log("This is", list)
                 return <Listing 
-                url={id} 
-                city={city} 
-                room_type={listingData[0].room_type} 
-                security_deposit={listingData[0].security_deposit}
-                guests_included={listingData[0].guests_included}
-                min_nights={listingData[0].min_nights}
-                price={listingData[0].price}
+                url={list} 
+                city={list.city} 
+                room_type={list.room_type} 
+                security_deposit={list.security_deposit}
+                guests_included={list.guests_included}
+                min_nights={list.min_nights}
+                price={list.price}
                 />
             })}
 
