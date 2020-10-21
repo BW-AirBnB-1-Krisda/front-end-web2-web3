@@ -4,12 +4,24 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const Listing = (props) => {
     const [listData, setListData] = useState([]);
-    console.log(listData)
-    const addNewListing = (listing) => {
-        setListData([...listData, listing])
+
+    function addNewListing() {
+        const newlisting = {
+            id: props.id,
+            room_type: props.room_type,
+            city: props.city,
+            guests_included: props.guests_included,
+            min_nights: props.min_nights,
+            price: props.price
+        };
+        setListData([...listData, newlisting]);
+        return (
+            <DeleteIcon />
+        );
     }
+    console.log(listData)
     return (
-        <div className="listing" key={props.key}>
+        <div className="listing">
         <h1>{props.city}</h1>
             <img src="https://a0.muscache.com/im/pictures/b0c6aa89-c43e-424b-89f0-34b27b840a9c.jpg?im_w=1200" alt="airbnb"></img>
         <div className="attributes">
@@ -21,7 +33,7 @@ const Listing = (props) => {
                 <li>Price: ${props.price}</li>
             </ul>
         </div>
-        <button className="addbutton" onClick={addNewListing}>
+        <button className="addbutton" onClick={() => addNewListing()}>
             <div className="control">
                 <ControlPointIcon color="white" />
             </div>

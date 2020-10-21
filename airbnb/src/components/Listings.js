@@ -55,6 +55,7 @@ const Listings = (props) => {
                 console.log("This is", list)
                 return <Listing 
                 url={list} 
+                id={list.id}
                 city={list.city} 
                 room_type={list.room_type} 
                 security_deposit={list.security_deposit}
