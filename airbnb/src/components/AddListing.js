@@ -3,7 +3,7 @@ import { addListing } from "../actions";
 import { connect } from "react-redux";
 
 const initialAddListingForm = {
-    id: "",
+    // id: "",
     city: "",
     room_type: "",
     security_deposit: 0, //float

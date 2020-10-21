@@ -8,6 +8,7 @@ import "../App.css";
 
 const initialLoginForm = {
 
+    id: "",
     username: "",
     password: ""
 }

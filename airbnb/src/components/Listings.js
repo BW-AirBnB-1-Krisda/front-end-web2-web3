@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { getListings } from "../actions";
+import { getListings, deleteListing } from "../actions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import ListingCard from "./ListingCard";
@@ -9,8 +9,12 @@ const Listings = (props) => {
     const [listingsList, setListingsList] = useState([])
 
     useEffect(() => {
-        props.getListings()
+        props.getListings(listingsList)
     }, [listingsList] )
+
+    if (!listingsList) {
+        return <div>Loading listing list...</div>
+    }
 
     return (
         <div>
@@ -26,6 +30,8 @@ const Listings = (props) => {
             {listingsList.map(listing => (
                 <Link key={listing.id} to={`/listings/${listing.id}`}>
                     <ListingCard listing={listing}/>
+                    <button onClick={deleteListing}>Delete listing</button>
+                    <button onClick={() => props.history.push(`/edit-listing/${listing.id}`)}>Edit listing</button>
                 </Link>
             ))}
           
@@ -45,7 +51,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    getListings
+    getListings,
+    deleteListing
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listings)

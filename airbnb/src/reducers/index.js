@@ -2,19 +2,25 @@ import * as actions from "../actions";
 
 const initialState = {
 
-    id: "",
     listings: [
-        // {
-        //     id: 1,
-        //     city: "New York",
-        //     room_type: "Hotel Room",
-        //     security_deposit: 100, //float
-        //     guests_included: 2, //int
-        //     min_nights: 2, //int
-        //     // price: 100,
-        // }
+        {
+            id: 1,
+            city: "",
+            room_type: "",
+            security_deposit: 0, //float
+            guests_included: 0, //int
+            min_nights: 0, //int
+            price: 0, 
+        }
+
     ],
-    user: {},
+    user: {
+        id: "",
+        username: "",
+        password: "",
+        email: "",
+        message: "",
+    },
     isFetching: "",
     error: ""
 }
@@ -68,10 +74,10 @@ export const reducer = (state = initialState, action) => {
 
         return {
             ...state,
-            id: Date.now(),
-            listings: [
-                ...state.listings
-            ],
+            listings: [{
+                ...state.listings,
+                id: state.listings.id
+            }],
             isFetching: false
         }
 
@@ -92,7 +98,8 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 user: {
-                    ...state.user
+                    ...state.user,
+                    message: action.payload.message
             },
             isFetching: false
         }
@@ -114,7 +121,11 @@ export const reducer = (state = initialState, action) => {
         return {
             ...state,
             user: {
-                ...state.user
+                ...state.user,
+                id: action.payload.id,
+                username: action.payload.username,
+                password: action.payload.password,
+                email: action.payload.email
             },
             isFetching: false
         }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getListingCard, editListingAction } from "../actions";
+import { editListingAction } from "../actions";
 import { connect } from "react-redux";
 
 const initialEditListingForm = {
@@ -101,7 +101,6 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    getListingCard,
     editListingAction
 }
 
