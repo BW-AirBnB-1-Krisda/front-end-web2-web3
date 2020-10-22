@@ -84,7 +84,7 @@ export const login = (user, history) => (dispatch) => {
 
 //ACTION CREATOR : GET USER LISTINGS
 
-export const getListings = (id) => (dispatch) => {
+export const getListings = (id, history) => (dispatch) => {
   console.log("Get listings async action creator: ", dispatch);
 
   console.log("GET LISTING ID: ", id);
@@ -99,6 +99,7 @@ export const getListings = (id) => (dispatch) => {
         type: LISTING_FETCHED,
         payload: res.data,
       });
+            history.push(`/listings/user/${id}`);
     })
     .catch((err) => {
       console.log("Action: FAIL to getListing: ", err);
@@ -128,7 +129,7 @@ export const addListing = (listing, id, history) => (dispatch) => {
               type: ADD_LISTING_SUCCESSFUL,
               payload: response.data,
             });
-            getListings(id);
+            getListings(id, history);
             history.push(`/listings/user/${id}`);
           })
           .catch((err) => {
@@ -167,17 +168,19 @@ export const addListing = (listing, id, history) => (dispatch) => {
 
 //ACTION CREATOR : DELETE A LISTING
 
-export const deleteListing = (id, history) => (dispatch) => {
+export const deleteListing = (listingId, history, id) => (dispatch) => {
   console.log("Action creator deleteListing: ", dispatch);
 
   dispatch({ type: DELETE_LISTING });
 
+  console.log("DELETE ID: ", listingId)
+
   axiosWithAuth()
-    .delete(`/listings/${id}`)
+    .delete(`/listings/${listingId}`)
     .then((res) => {
       console.log("Action creator deleteListing DELETE: ", res.data);
-      getListings(id);
-      history.push(`/listings/user/${id}`);
+      getListings(id, history);
+    //   history.push(`/listings/user/${id}`);
     //   alert("Your listing has successfully been deleted!");
     })
     .catch((err) => {
@@ -210,7 +213,7 @@ export const editListingAction = (listings, id, history) => (dispatch) => {
             type: EDIT_LISTING_SUCCESSFUL,
             payload: response.data,
           });
-          getListings(id);
+          getListings(id, history);
           history.push(`/listings/user/${id}`);
         })
         .catch((err) => {

@@ -1,6 +1,16 @@
 import React from "react"
 
+import { deleteListing } from "../actions";
+import { connect } from "react-redux";
+
 const ListingCard = (props) => {
+
+    console.log("LISTINGS EDIT: ", props.listing.id)
+
+    const deleteListingCard = (e) => {
+        e.preventDefault()
+        props.deleteListing(props.listing.id, props.history, props.id)
+    }
 
     return (
         <div>
@@ -13,11 +23,24 @@ const ListingCard = (props) => {
             <p>Min. no. of nights: {props.listing.min_nights}</p>
             {/* <p>OPTIMAL Price: {props.listing.price}</p> */}
 
-            <button>Edit Listing</button>
-            <button>Delete Listing</button>
+            <button onClick={() => props.history.push(`/listings/${props.user.user.id}`)}>Edit Listing</button>
+            <button onClick={deleteListingCard}>Delete Listing</button>
 
         </div>
     )
 }
 
-export default ListingCard
+const mapStateToProps = (state) => {
+    return {
+        listings: state.listings,
+        user: state.user,
+        isFetching: state.isFetching,
+        error: state.error
+    }
+}
+
+const mapDispatchToProps = {
+    deleteListing
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListingCard)

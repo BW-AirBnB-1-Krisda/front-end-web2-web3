@@ -18,7 +18,7 @@ const EditListing = (props) => {
 
   const [editListing, setEditListing] = useState(initialEditListingForm);
 
-  const { id } = useParams();
+  const { listings } = useParams();
 
   useEffect(() => {
     props.getListingCard(props.id);
@@ -34,7 +34,7 @@ const EditListing = (props) => {
 
   const submitEditListingForm = (e) => {
     e.preventDefault();
-    props.editListingAction(editListing, id, props.history);
+    props.editListingAction(editListing, listings.id, props.history, props.user);
   };
 
   return (

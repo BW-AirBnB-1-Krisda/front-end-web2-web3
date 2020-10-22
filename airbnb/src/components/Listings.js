@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { getListings, deleteListing } from "../actions";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import ListingCard from "./ListingCard";
 
 import { useParams } from "react-router-dom";
@@ -13,7 +12,7 @@ const Listings = (props) => {
     const { id } = useParams();
 
     useEffect(() => {
-        props.getListings(id)
+        props.getListings(id, props.history)
     }, [listingsList] )
 
     if (!listingsList) {
@@ -24,28 +23,21 @@ const Listings = (props) => {
     return (
         <div>
 
-            {props.listings.map(listing => (
-                // <Link key={listing.id} to={`/listings/${listing.id}`}>
-                    <ListingCard key={listing.id} listing={listing}/>
-                    /* <button onClick={deleteListing}>Delete listing</button>
-                    <button onClick={() => props.history.push(`/edit-listing/${listing.id}`)}>Edit listing</button> */
-                // </Link>
-            ))}
-          
+            <div>
+                <h1>Welcome {props.user.user.username}</h1>
+            </div>
 
-            {/* <button onClick={() => props.getListings(id)}>Get listings</button> */}
+            {props.listings.map(listing => (
+                    <ListingCard key={listing.id} listing={listing} />
+            ))}
 
             <a
             href="/login"
             onClick={() => window.localStorage.clear()} 
             >
             Log out</a>
-            {/* <h1>Listings go here with the functionality to get all the listings, add a new listing, edit an existing listing and get the optimal price for the listing, and delete the listing</h1> */}
+         
             <button onClick={() => props.history.push("/add-listing")}>Add new listing</button>
-
-            <div>
-                <h1>Welcome {props.user.user.username}</h1>
-            </div>
 
         </div>
 
