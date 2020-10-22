@@ -34,8 +34,6 @@ export const register = (user, history) => (dispatch) => {
     .then((res) => {
       console.log("Action creator register POST: ", res.data);
 
-      localStorage.setItem("token", res.data.token);
-
       dispatch({
         type: REGISTER_SUCCESSFUL,
         payload: res.data,
@@ -43,7 +41,7 @@ export const register = (user, history) => (dispatch) => {
 
       console.log("USER ID: ", res.data.id);
 
-      history.push(`/listings/user/${res.data.id}`);
+      history.push(`/login`);
     })
 
     .catch((err) => {
