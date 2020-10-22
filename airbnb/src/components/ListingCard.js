@@ -3,7 +3,11 @@ import React from "react"
 import { deleteListing } from "../actions";
 import { connect } from "react-redux";
 
+import { useHistory } from "react-router-dom";
+
 const ListingCard = (props) => {
+
+    const history = useHistory();
 
     console.log("LISTINGS EDIT: ", props.listing.id)
 
@@ -23,7 +27,7 @@ const ListingCard = (props) => {
             <p>Min. no. of nights: {props.listing.min_nights}</p>
             {/* <p>OPTIMAL Price: {props.listing.price}</p> */}
 
-            <button onClick={() => props.history.push(`/listings/${props.user.user.id}`)}>Edit Listing</button>
+            <button onClick={() => history.push(`/listings/${props.listing.id}`)}>Edit Listing</button>
             <button onClick={deleteListingCard}>Delete Listing</button>
 
         </div>

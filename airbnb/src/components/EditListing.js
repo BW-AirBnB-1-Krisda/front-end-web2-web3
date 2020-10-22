@@ -18,11 +18,11 @@ const EditListing = (props) => {
 
   const [editListing, setEditListing] = useState(initialEditListingForm);
 
-  const { listings } = useParams();
+  const { id } = useParams();
 
-  useEffect(() => {
-    props.getListingCard(props.id);
-  }, [props.id]);
+  // useEffect(() => {
+  //   props.getListings(props.listing.id, props.history);
+  // }, [props.id]);
 
   const handleInputChange = (e) => {
     e.persist();
@@ -34,7 +34,7 @@ const EditListing = (props) => {
 
   const submitEditListingForm = (e) => {
     e.preventDefault();
-    props.editListingAction(editListing, listings.id, props.history, props.user);
+    props.editListingAction(id, editListing, props.id, props.history);
   };
 
   return (
