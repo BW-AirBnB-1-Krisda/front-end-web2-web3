@@ -153,7 +153,7 @@ ul {
   border-radius: 5%;
   margin: 5px;
 }
-.addbutton {
+.topchill-button {
   display: flex;
   margin: 5px;
   padding: 5px;
@@ -163,20 +163,7 @@ ul {
   background-color: #6AD5CB;
   font-family: 'Krona One', sans-serif;
 }
-.addbutton:hover{
-  background-color: lime;
-}
-.deletebutton {
-  display: flex;
-  margin: 5px;
-  padding: 5px;
-  font-size: 20px;
-  border: 1px solid black;
-  box-shadow: 3px 3px 3px black;
-  background-color: #6AD5CB;
-  font-family: 'Krona One', sans-serif;
-}
-.deletebutton:hover{
+.topchill-button:hover{
   background-color: lime;
 }
 .control {
@@ -199,4 +186,18 @@ label {
 .buttons{
   display: flex;
   flex-direction: row;
+}
+.form-input{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+select{
+  width: 65%;
+  margin-top: 10px;
 }

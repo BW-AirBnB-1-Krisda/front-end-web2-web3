@@ -6,6 +6,7 @@ const Listing = (props) => {
     const [listData, setListData] = useState([]);
 
     function addNewListing() {
+        
         const newlisting = {
             id: props.id,
             room_type: props.room_type,
@@ -32,7 +33,7 @@ const Listing = (props) => {
             </ul>
         </div>
         <div className="buttons">
-        <button className="addbutton" onClick={() => addNewListing()}>
+        <button className="topchill-button" onClick={() => addNewListing()}>
             <div className="control">
                 <ControlPointIcon color="white" />
             </div>
@@ -40,7 +41,7 @@ const Listing = (props) => {
                 Add Listing
             </div>
         </button>
-        <button className="deletebutton">
+        <button className="topchill-button">
             <div className="control">
                 <DeleteIcon color="white" />
             </div>
