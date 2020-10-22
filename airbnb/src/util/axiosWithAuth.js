@@ -6,9 +6,9 @@ export const axiosWithAuth = () => {
 
     return axios
     .create({
-        baseURL: "https://top-chill.herokuapp.com/api/auth",
+        baseURL: "https://top-chill.herokuapp.com/api",
         headers: {
-            Authorization: token
+            Authorization: `Bearer ${token}`
         }
     })
 }

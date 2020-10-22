@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import "../App.css";
 
-function Register (props) {
+function UserRegister (props) {
 
     const [userRegister, setUserRegister] = useState({
         username: "",
@@ -157,4 +157,4 @@ const mapDispatchToProps = {
     register
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(mapStateToProps, mapDispatchToProps)(UserRegister)
