@@ -43,14 +43,14 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 500px;
+  width: auto;
   margin-top: 20px;
   background-color: #fff;
   box-shadow: 5px 5px 20px 2px #634A39;
   border-radius: 4px;
   position: relative;
   z-index: 99;
-  padding: 17px 10px 35px;
+  padding: 17px 50px 35px;
   transition: transform 200ms ease-in-out;
   border: 3px solid #634A39;
 }
@@ -125,14 +125,17 @@ button:disabled {
 
 .listing {
   margin: 20px 0;
-  border: 3px solid black;
+  border: 1px solid #634A39;
   border-radius: 5%;
-  width: fit-content;
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   box-shadow: 5px 5px 5px #634A39;
+}
+h1 {
+  font-family: 'Krona One', sans-serif;
 }
 ul, li {
   margin: 0;
@@ -140,11 +143,61 @@ ul, li {
   list-style: none;
   align-items: left;
 }
-.listing img {
-  border: 3px solid black;
+ul {
+  width: 300px;
+  text-align: left;
+  font-family: 'Krona One', sans-serif;
 }
-
+.listing img {
+  border: 1px solid black;
+  border-radius: 5%;
+  margin: 5px;
+}
+.topchill-button {
+  display: flex;
+  margin: 5px;
+  padding: 5px;
+  font-size: 20px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px black;
+  background-color: #6AD5CB;
+  font-family: 'Krona One', sans-serif;
+}
+.topchill-button:hover{
+  background-color: lime;
+}
+.control {
+  padding: 0px 10px 0px 5px;
+}
+label {
+  font-family: 'Krona One', sans-serif;
+  padding-right: 10px;
+}
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .error {
-  font-size: 1.2rem;
+  font-size: 12px;
   color: red;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+}
+.form-input{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.form-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+select{
+  width: 65%;
+  margin-top: 10px;
 }

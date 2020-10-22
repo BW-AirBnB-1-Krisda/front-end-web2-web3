@@ -94,7 +94,7 @@ function Register (props) {
                     <label htmlFor="password">
                         Password:
                         <input 
-                            type="text"
+                            type="password"
                             id="password"
                             name="password"
                             placeholder="password"
