@@ -117,6 +117,40 @@ export const reducer = (state = initialState, action) => {
         isFetching: false,
       };
 
+//FETCH OPTIMAL PRICE
+
+case actions.FETCH_OPTIMAL_PRICE_START:
+  console.log("FETCH OPTIMAL PRICE: reducer");
+
+  return {
+    ...state,
+    listings: action.payload,
+    isFetching: true,
+  };
+
+
+  case actions.FETCH_OPTIMAL_PRICE_SUCCESSFUL:
+    console.log("Fetch optimal price successful: reducer");
+
+    return {
+      ...state,
+      listings: action.payload
+              // id: action.payload.id,
+          // city: action.payload.city,
+          // room_type: action.payload.room_type,
+          // security_deposit: action.payload.security_deposit, 
+          // guests_included: action.payload.guests_included, 
+          // min_nights: action.payload.min_nights, 
+          // price: action.payload.price,
+          // user_id: action.payload.user_id
+
+        ,
+        
+  
+      isFetching: false,
+    };
+
+
 
       //ADD LISTING
 
@@ -137,7 +171,8 @@ export const reducer = (state = initialState, action) => {
         listings: [
           {
             ...state.listings,
-            id: action.payload.id,
+            // listings: action.payload,
+                id: action.payload.id,
             city: action.payload.city,
             room_type: action.payload.room_type,
             security_deposit: action.payload.security_deposit, 
@@ -145,8 +180,10 @@ export const reducer = (state = initialState, action) => {
             min_nights: action.payload.min_nights, 
             price: action.payload.price,
             user_id: action.payload.user_id
-          }
-        ],
+
+          }],
+          
+    
         isFetching: false,
       };
 
