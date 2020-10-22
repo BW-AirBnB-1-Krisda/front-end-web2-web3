@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { editListingAction } from "../actions";
 import { connect } from "react-redux";
 
+import { useParams } from "react-router-dom";
+
 const initialEditListingForm = {
   id: "",
   city: "",
@@ -13,7 +15,10 @@ const initialEditListingForm = {
 };
 
 const EditListing = (props) => {
+
   const [editListing, setEditListing] = useState(initialEditListingForm);
+
+  const { id } = useParams();
 
   useEffect(() => {
     props.getListingCard(props.id);
@@ -29,7 +34,7 @@ const EditListing = (props) => {
 
   const submitEditListingForm = (e) => {
     e.preventDefault();
-    props.editListingAction(props.id, props.listing, props.history);
+    props.editListingAction(editListing, id, props.history);
   };
 
   return (

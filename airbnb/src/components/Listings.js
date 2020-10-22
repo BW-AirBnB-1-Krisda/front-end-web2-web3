@@ -17,11 +17,21 @@ const Listings = (props) => {
     }, [listingsList] )
 
     if (!listingsList) {
-        return <div>Loading listing list...</div>
-    }
+        return <div>Loading listing list...</div>}
+
+        console.log("LISTING LIST: ", props.listings)
 
     return (
         <div>
+
+            {props.listings.map(listing => (
+                // <Link key={listing.id} to={`/listings/${listing.id}`}>
+                    <ListingCard key={listing.id} listing={listing}/>
+                    /* <button onClick={deleteListing}>Delete listing</button>
+                    <button onClick={() => props.history.push(`/edit-listing/${listing.id}`)}>Edit listing</button> */
+                // </Link>
+            ))}
+          
 
             {/* <button onClick={() => props.getListings(id)}>Get listings</button> */}
 
@@ -37,14 +47,6 @@ const Listings = (props) => {
                 <h1>Welcome {props.user.user.username}</h1>
             </div>
 
-            {listingsList.map(listing => (
-                <Link key={listing.id} to={`/listings/${listing.id}`}>
-                    <ListingCard listing={listing}/>
-                    {/* <button onClick={deleteListing}>Delete listing</button>
-                    <button onClick={() => props.history.push(`/edit-listing/${listing.id}`)}>Edit listing</button> */}
-                </Link>
-            ))}
-          
         </div>
 
     )

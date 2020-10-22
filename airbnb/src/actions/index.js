@@ -17,8 +17,10 @@ export const LISTING_FAILED_TO_FETCH = "LISTING_FAILED_TO_FETCH";
 export const ADD_LISTING_START = "ADD_LISTING_START";
 export const ADD_LISTING_SUCCESSFUL = "ADD_LISTING_SUCCESSFUL";
 
+export const EDIT_LISTING_START = "EDIT_LISTING_START";
+export const EDIT_LISTING_SUCCESSFUL = "EDIT_LISTING_SUCCESSFUL";
+
 export const DELETE_LISTING = "DELETE_LISTING";
-export const EDIT_LISTING = "EDIT_LISTING";
 
 
 //ACTION CREATOR : REGISTER
@@ -110,38 +112,56 @@ export const getListings = (id) => (dispatch) => {
 
 //ACTION CREATOR : ADD A LISTING
 
-export const addListing = (listings, history, id) => (dispatch) => {
+export const addListing = (listing, id, history) => (dispatch) => {
   console.log("Action creator addListing: ", dispatch);
 
   dispatch({ type: ADD_LISTING_START });
 
-  axios
-    .get(
-      `https://airbnbapi-ds.herokuapp.com/predict?city=${listings.city}&room_type=${listings.room_type}&security_deposit=${listings.security_deposit}&guest_included=${listings.guests_included}&mininum_nights=${listings.min_nights}`
-    )
-    .then((res) => {
-      console.log("Action creator addListing DS API POST success: ", res.data);
-      axiosWithAuth()
-        .post(`/listings/user/${id}`, res.data)
-        .then((response) => {
-          console.log(
-            "Action creator addListing success POST: ",
-            response.data
-          );
-          dispatch({
-            type: ADD_LISTING_SUCCESSFUL,
-            payload: response.data,
+  axiosWithAuth()
+          .post(`/listings/user/${id}`, listing)
+          .then((response) => {
+            console.log(
+              "Action creator addListing success POST: ",
+              response.data
+            );
+            dispatch({
+              type: ADD_LISTING_SUCCESSFUL,
+              payload: response.data,
+            });
+            getListings(id);
+            history.push(`/listings/user/${id}`);
+          })
+          .catch((err) => {
+            console.log("AddListing NOT successful: ", err);
           });
-          getListings();
-          history.push("/listings");
-        })
-        .catch((err) => {
-          console.log("AddListing NOT successful: ", err);
-        });
-    })
-    .catch((error) => {
-      console.log("AddListing DS API NOT successful: ", error);
-    });
+
+//   axios
+//     .get(
+//       `https://airbnbapi-ds.herokuapp.com/predict?city=${listings.city}&room_type=${listings.room_type}&security_deposit=${listings.security_deposit}&guest_included=${listings.guests_included}&mininum_nights=${listings.min_nights}`
+//     )
+//     .then((res) => {
+//       console.log("Action creator addListing DS API POST success: ", res.data);
+//       axiosWithAuth()
+//         .post(`/listings/user/${id}`, res.data)
+//         .then((response) => {
+//           console.log(
+//             "Action creator addListing success POST: ",
+//             response.data
+//           );
+//           dispatch({
+//             type: ADD_LISTING_SUCCESSFUL,
+//             payload: response.data,
+//           });
+//           getListings(id);
+//           history.push(`/listings/user/${id}`);
+//         })
+//         .catch((err) => {
+//           console.log("AddListing NOT successful: ", err);
+//         });
+//     })
+//     .catch((error) => {
+//       console.log("AddListing DS API NOT successful: ", error);
+//     });
 };
 
 
@@ -156,9 +176,9 @@ export const deleteListing = (id, history) => (dispatch) => {
     .delete(`/listings/${id}`)
     .then((res) => {
       console.log("Action creator deleteListing DELETE: ", res.data);
-      getListings();
-      history.push("/listings");
-      alert("Your listing has successfully been deleted!");
+      getListings(id);
+      history.push(`/listings/user/${id}`);
+    //   alert("Your listing has successfully been deleted!");
     })
     .catch((err) => {
       console.log("deleteListing NOT successful: ", err);
@@ -168,10 +188,10 @@ export const deleteListing = (id, history) => (dispatch) => {
 
 //ACTION CREATOR : EDIT A LISTING
 
-export const editListingAction = (id, listings, history) => (dispatch) => {
-  console.log({ type: EDIT_LISTING });
+export const editListingAction = (listings, id, history) => (dispatch) => {
+  console.log("Action creator editListing: ", dispatch);
 
-  dispatch({ type: EDIT_LISTING });
+  dispatch({ type: EDIT_LISTING_START });
 
   axios
     .post(
@@ -186,8 +206,12 @@ export const editListingAction = (id, listings, history) => (dispatch) => {
             "Action creator editListing success POST: ",
             response.data
           );
-          getListings();
-          history.push("/listings");
+          dispatch({
+            type: EDIT_LISTING_SUCCESSFUL,
+            payload: response.data,
+          });
+          getListings(id);
+          history.push(`/listings/user/${id}`);
         })
         .catch((err) => {
           console.log("EditListing NOT successful: ", err);

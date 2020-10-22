@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { addListing } from "../actions";
 import { connect } from "react-redux";
 
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 const initialAddListingForm = {
     // id: "",
@@ -11,7 +11,7 @@ const initialAddListingForm = {
     security_deposit: 0, //float
     guests_included: 0, //int
     min_nights: 0, //int
-    price: ""
+    // price: ""
 }
 
 
@@ -19,7 +19,7 @@ const AddListing = (props) => {
 
 const [newListing, setNewListing] = useState(initialAddListingForm)
 
-const { id } = useParams();
+// const { id } = useParams();
 
 const handleInputChange = (e) => {
     e.persist()
@@ -31,7 +31,7 @@ const handleInputChange = (e) => {
 
 const submitNewListingForm = (e) => {
     e.preventDefault()
-    props.addListing(newListing, props.history, id)
+    props.addListing(newListing, props.user.user.id, props.history)
     
 }
 
