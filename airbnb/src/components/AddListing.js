@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { addListing } from "../actions";
+import { addListing, fetchOptimalPrice } from "../actions";
 import { connect } from "react-redux";
 
-// import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const initialAddListingForm = {
-    // id: "",
+    id: "",
     city: "",
     room_type: "",
     security_deposit: 0, //float
@@ -19,8 +19,6 @@ const AddListing = (props) => {
 
 const [newListing, setNewListing] = useState(initialAddListingForm)
 
-// const { id } = useParams();
-
 const handleInputChange = (e) => {
     e.persist()
     setNewListing({
@@ -31,7 +29,8 @@ const handleInputChange = (e) => {
 
 const submitNewListingForm = (e) => {
     e.preventDefault()
-    props.addListing(newListing, props.user.user.id, props.history)
+    props.fetchOptimalPrice(newListing, props.user.user.id, props.history)
+    // props.addListing(props.listings, props.user.user.id, props.history)
     
 }
 
@@ -99,7 +98,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    addListing
+    addListing,
+    fetchOptimalPrice
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddListing)
