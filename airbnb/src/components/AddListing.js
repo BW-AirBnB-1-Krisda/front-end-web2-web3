@@ -11,7 +11,7 @@ const initialAddListingForm = {
     security_deposit: 0, //float
     guests_included: 0, //int
     min_nights: 0, //int
-    // price: ""
+    price: 0
 }
 
 
