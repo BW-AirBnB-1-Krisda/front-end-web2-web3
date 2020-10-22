@@ -5,6 +5,8 @@ import ListingCard from "./ListingCard";
 
 import { useParams } from "react-router-dom";
 
+import ControlPointIcon from '@material-ui/icons/ControlPoint';
+
 const Listings = (props) => {
 
     const [listingsList, setListingsList] = useState([ {
@@ -26,13 +28,17 @@ const Listings = (props) => {
           price: 900
       }])
 
-    //   const [city, setCity] = useState(["St. Louis"]);
+      const [city, setCity] = useState(["St. Louis"]);
 
     const { id } = useParams();
 
     useEffect(() => {
         props.getListings(id, props.history)
     }, [listingsList] )
+
+    const handleChange = (event) => {
+        setCity(event.target.value);
+      };
 
     if (!listingsList) {
         return <div>Loading listing list...</div>}
