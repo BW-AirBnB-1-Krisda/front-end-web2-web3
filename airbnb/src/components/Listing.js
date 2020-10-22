@@ -15,10 +15,8 @@ const Listing = (props) => {
             price: props.price
         };
         setListData([...listData, newlisting]);
-        return (
-            <DeleteIcon />
-        );
     }
+    
     console.log(listData)
     return (
         <div className="listing">
@@ -33,6 +31,7 @@ const Listing = (props) => {
                 <li>Price: ${props.price}</li>
             </ul>
         </div>
+        <div className="buttons">
         <button className="addbutton" onClick={() => addNewListing()}>
             <div className="control">
                 <ControlPointIcon color="white" />
@@ -40,7 +39,16 @@ const Listing = (props) => {
             <div>
                 Add Listing
             </div>
-            </button>
+        </button>
+        <button className="deletebutton">
+            <div className="control">
+                <DeleteIcon color="white" />
+            </div>
+            <div>
+                Delete Listing
+            </div>
+        </button>
+        </div>
         </div>
     )
 }

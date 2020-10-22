@@ -166,6 +166,19 @@ ul {
 .addbutton:hover{
   background-color: lime;
 }
+.deletebutton {
+  display: flex;
+  margin: 5px;
+  padding: 5px;
+  font-size: 20px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px black;
+  background-color: #6AD5CB;
+  font-family: 'Krona One', sans-serif;
+}
+.deletebutton:hover{
+  background-color: lime;
+}
 .control {
   padding: 0px 10px 0px 5px;
 }
@@ -182,4 +195,8 @@ label {
   font-size: 12px;
   color: red;
   font-family: Arial, Helvetica, sans-serif;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
 }

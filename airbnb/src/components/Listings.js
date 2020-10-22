@@ -21,15 +21,15 @@ const Listings = (props) => {
             guests_included: 4,
             min_nights: 3,
             price: 900
-          }
+        }
       ]);
     const [city, setCity] = useState(["St. Louis"]);
     console.log(listingData)
 
     const effectFn = () => {
         axios
-        .get(``)
-        .then((res) => setListingData(res));
+        .get(`https://top-chill.herokuapp.com/api/listings/:id`)
+        .then((res) => console.log(res));
     };
     useEffect(effectFn, [city]);
 
