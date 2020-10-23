@@ -193,7 +193,7 @@ export const deleteListing = (listingId, history, id) => (dispatch) => {
 
 // const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-export const editListingAction = (listingId, listing, id, history) => (dispatch) => {
+export const editListingAction = (listingId, listing, history) => (dispatch) => {
   console.log("Action creator editListing: ", dispatch);
 
   dispatch({ type: EDIT_LISTING_START });
@@ -211,8 +211,8 @@ export const editListingAction = (listingId, listing, id, history) => (dispatch)
               type: EDIT_LISTING_SUCCESSFUL,
               payload: response.data,
             });
-            getListings(id, history);
-            // history.push(`/listings/user/${id}`);
+            // getListings(id, history);
+            history.push(`/listings/user/${response.user_id}`);
           })
           .catch((err) => {
             console.log("Edit Listing NOT successful: ", err);

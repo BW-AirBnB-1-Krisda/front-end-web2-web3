@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { editListingAction } from "../actions";
+import { editListingAction, getListings } from "../actions";
 import { connect } from "react-redux";
 
 import { useParams } from "react-router-dom";
@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import EditIcon from "@material-ui/icons/Edit";
 
 const initialEditListingForm = {
-  id: "",
+  // id: "",
   city: "",
   room_type: "",
   security_deposit: 0, //float
@@ -33,9 +33,13 @@ const EditListing = (props) => {
     });
   };
 
+  // console.log("USER ID EDITLISTING: ", props.listings.user_id)
+
   const submitEditListingForm = (e) => {
     e.preventDefault();
-    props.editListingAction(id, editListing, props.id, props.history);
+    props.editListingAction(id, editListing, props.history)
+    // props.getListings(props.id, props.history)
+    
   };
 
   return (
@@ -81,7 +85,7 @@ const EditListing = (props) => {
             />
           </div>
 
-          <div className="form-input">
+          {/* <div className="form-input">
             <label htmlFor="price">Price:</label>
             <input
               htmlFor="price"
@@ -92,7 +96,7 @@ const EditListing = (props) => {
               onChange={handleInputChange}
               value={editListing.price}
             />
-          </div>
+          </div> */}
 
           <div className="form-input">
             <label htmlFor="room">Room Type:</label>
@@ -156,6 +160,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   editListingAction,
+  getListings
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditListing);

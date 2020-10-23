@@ -175,7 +175,7 @@ export const reducer = (state = initialState, action) => {
                       security_deposit: action.payload.security_deposit, 
                       guests_included: action.payload.guests_included, 
                       min_nights: action.payload.min_nights, 
-                      price: action.payload.price,
+                      // price: action.payload.price,
                       user_id: action.payload.user_id
                     }
                 ],
