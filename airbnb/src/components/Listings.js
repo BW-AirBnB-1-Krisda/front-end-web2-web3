@@ -33,7 +33,7 @@ const Listings = (props) => {
     const { id } = useParams();
 
     useEffect(() => {
-        props.getListings(id, props.history)
+        props.getListings(id)
     }, [listingsList] )
 
     const handleChange = (event) => {
