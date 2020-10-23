@@ -191,7 +191,7 @@ export const deleteListing = (listingId, history, id) => (dispatch) => {
 
 //ACTION CREATOR : EDIT A LISTING
 
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
+// const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 export const editListingAction = (listingId, listing, id, history) => (dispatch) => {
   console.log("Action creator editListing: ", dispatch);
@@ -201,7 +201,7 @@ export const editListingAction = (listingId, listing, id, history) => (dispatch)
   console.log("EDIT LISTING LISTING PARAM ", listing)
 
   axiosWithAuth()
-          .put(proxyurl + `/listings/${listingId}`, listing)
+          .put(`/listings/${listingId}`, listing)
           .then((response) => {
             console.log(
               "Action creator editListing success POST: ",
