@@ -212,7 +212,7 @@ export const editListingAction = (listingId, listing, history) => (dispatch) => 
               payload: response.data,
             });
             // getListings(id, history);
-            history.push(`/listings/user/${response.user_id}`);
+            history.push(`/listings/user/${response.data.user_id}`);
           })
           .catch((err) => {
             console.log("Edit Listing NOT successful: ", err);
