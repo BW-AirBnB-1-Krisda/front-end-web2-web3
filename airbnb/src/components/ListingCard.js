@@ -46,7 +46,7 @@ const ListingCard = (props) => {
             </div>
         </button>
 
-        <button className="topchill-button" onClick={deleteListingCard}>>
+        <button className="topchill-button" onClick={deleteListingCard}>
             <div className="control">
                 <DeleteIcon color="white" />
             </div>
