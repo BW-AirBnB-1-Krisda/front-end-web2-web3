@@ -123,33 +123,24 @@ export const fetchOptimalPrice = (listings, id, history) => (dispatch) => {
 
   dispatch({ type: FETCH_OPTIMAL_PRICE_START });
 
-  fetch
-  (
+  axios
+  .get(
     `https://airbnbapi-ds.herokuapp.com/predict?city=${listings.city}&room_type=${listings.room_type}&security_deposit=${listings.security_deposit}&guest_included=${listings.guests_included}&mininum_nights=${listings.min_nights}&price=${listings.price}`
   )
   .then((res) => {
     console.log("Action creator DS API POST success: ", res);
 
-})
-.catch((error) => {
-  console.log("DS API NOT successful: ", error);
-})
-.then((res) => {
-  res.json()})
-  .then((json) => {
-
     dispatch({
       type: FETCH_OPTIMAL_PRICE_SUCCESSFUL,
-      payload: json.data,
+      payload: res.data,
     });
+
     getListings(id);
     history.push(`/listings/user/${id}`)    
 
-
-  } )
-
+})
 .catch((error) => {
-  console.log("DS API JSON NOT successful: ", error);
+  console.log("DS API NOT successful: ", error);
 })
 }
 
@@ -221,9 +212,9 @@ export const deleteListing = (listingId, history, id) => (dispatch) => {
     .delete(`/listings/${listingId}`)
     .then((res) => {
       console.log("Action creator deleteListing DELETE: ", res.data);
-      getListings(id, history);
-    //   history.push(`/listings/user/${id}`);
-    //   alert("Your listing has successfully been deleted!");
+      getListings(id);
+      history.push(`/listings/user/${id}`);
+        // alert("Your listing has successfully been deleted!");
     })
     .catch((err) => {
       console.log("deleteListing NOT successful: ", err);
@@ -313,4 +304,4 @@ export const editListingAction = (listingId, listing, id, history) => (dispatch)
 //         payload: err.message,
 //       });
 //     });
-// };
+// }
