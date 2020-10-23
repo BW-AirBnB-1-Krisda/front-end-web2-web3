@@ -36,7 +36,6 @@ const ListingCard = (props) => {
         </div>
 
         <div className="buttons">
-
         <button className="topchill-button" onClick={() => history.push(`/listings/${props.listing.id}`)}>
             <div className="control">
                 <ControlPointIcon color="white" />
@@ -46,7 +45,7 @@ const ListingCard = (props) => {
             </div>
         </button>
 
-        <button className="topchill-button" onClick={deleteListingCard}>>
+        <button className="topchill-button" onClick={deleteListingCard}>
             <div className="control">
                 <DeleteIcon color="white" />
             </div>
