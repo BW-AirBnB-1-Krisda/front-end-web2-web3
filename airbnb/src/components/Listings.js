@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react"
-import { getListings, deleteListing } from "../actions";
+import { getListings } from "../actions";
 import { connect } from "react-redux";
 import ListingCard from "./ListingCard";
 
-import { useParams } from "react-router-dom";
+// import { useParams, useHistory } from "react-router-dom";
 
 import ControlPointIcon from '@material-ui/icons/ControlPoint';
 
@@ -30,10 +30,10 @@ const Listings = (props) => {
 
       const [city, setCity] = useState(["St. Louis"]);
 
-    const { id } = useParams();
+    //   const history = useHistory();
 
     useEffect(() => {
-        props.getListings(id, props.history)
+        props.getListings(props.user.user.id, props.history)
     }, [listingsList] )
 
     const handleChange = (event) => {
@@ -105,7 +105,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     getListings,
-    deleteListing
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Listings)

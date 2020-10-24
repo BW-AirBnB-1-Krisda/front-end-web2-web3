@@ -1,6 +1,6 @@
 import React from "react"
 
-import { deleteListing } from "../actions";
+import { deleteListing, getListings } from "../actions";
 import { connect } from "react-redux";
 
 import { useHistory } from "react-router-dom";
@@ -12,12 +12,22 @@ const ListingCard = (props) => {
 
     const history = useHistory();
 
-    console.log("LISTINGS EDIT: ", props.listing.id)
+   //   const deleteOnListings = (id) => {
+    //     const newListingArray = props.listings.filter((item) => item.id !== id)
+    //     setListingsList(newListingArray)
+    // }
 
+    console.log("Listing ID to delete: ", props.listing.id)
+    
     const deleteListingCard = (e) => {
         e.preventDefault()
-        props.deleteListing(props.listing.id, props.history, props.id)
+        // deleteOnListings(id) 
+        props.deleteListing(props.listing.id)
+        props.getListings(props.listing.user_id, props.history)
+        // history.push(`/listings/user/${props.listing.user_id}`)
     }
+
+
 
     return (
         <div className="listing">
@@ -70,7 +80,10 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    deleteListing
+    deleteListing,
+    getListings
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListingCard)
+
+// export default ListingCard

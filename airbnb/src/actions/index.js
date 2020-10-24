@@ -168,18 +168,18 @@ export const addListing = (listing, id, history) => (dispatch) => {
 
 //ACTION CREATOR : DELETE A LISTING
 
-export const deleteListing = (listingId, history, id) => (dispatch) => {
+export const deleteListing = (id) => (dispatch) => {
   console.log("Action creator deleteListing: ", dispatch);
 
   dispatch({ type: DELETE_LISTING });
 
-  console.log("DELETE ID: ", listingId)
+  console.log("DELETE ID: ", id)
 
   axiosWithAuth()
-    .delete(`/listings/${listingId}`)
+    .delete(`/listings/${id}`)
     .then((res) => {
       console.log("Action creator deleteListing DELETE: ", res.data);
-      getListings(id, history);
+      // getListings(id, history);
     //   history.push(`/listings/user/${id}`);
     //   alert("Your listing has successfully been deleted!");
     })
