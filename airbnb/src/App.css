@@ -54,6 +54,10 @@ body{
   transition: transform 200ms ease-in-out;
   border: 3px solid #634A39;
 }
+a {
+  text-decoration: none;
+  color: white;
+}
 button {
   font-size: 21px;
   padding: 5px 20px;
@@ -63,36 +67,24 @@ button {
   border-radius: 3px;
   transition: all 250ms ease-in-out;
   cursor: pointer;
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px black;
 }
 button:hover {
-  background-color: #2386c8;
+  background-color: lime;
 }
 button:focus {
   outline: none;
 }
-.submit{
-  margin-top: 10px;
-}
-.nav-links{
-  margin-top: 5%;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.loginButton{
-  margin-top: 15%;
+button:disabled {
+  background-image: none;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.1);
+  cursor: not-allowed;
 }
 input {
   margin-top: 20px;
-}
-.username {
-  font-size: 20px;
-}
-.password {
-  font-size: 20px;
-}
-.email {
-  font-size: 20px;
 }
 input, label {
   display: block;
@@ -104,35 +96,13 @@ input {
 label {
   margin-top: 20px;
   font-family: "Open Sans", sans-serif;
+  padding-right: 10px;
 }
 h5{
   text-decoration: none;
 }
 img {
   width: 350px;
-}
-.terms {
-  display: flexbox !important;
-  flex-direction: row !important;
-}
-button:disabled {
-  background-image: none;
-  background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.1);
-  cursor: not-allowed;
-}
-
-.listing {
-  margin: 20px 0;
-  border: 1px solid #634A39;
-  border-radius: 5%;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 5px 5px 5px #634A39;
 }
 h1 {
   font-family: 'Krona One', sans-serif;
@@ -147,6 +117,46 @@ ul {
   width: 300px;
   text-align: left;
   font-family: 'Krona One', sans-serif;
+}
+select{
+  width: 65%;
+  margin-top: 10px;
+}
+.submit{
+  margin-top: 10px;
+}
+.nav-links{
+  margin-top: 5%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.loginButton{
+  margin-top: 15%;
+}
+.username {
+  font-size: 20px;
+}
+.password {
+  font-size: 20px;
+}
+.email {
+  font-size: 20px;
+}
+.terms {
+  display: flexbox !important;
+  flex-direction: row !important;
+}
+.listing {
+  margin: 20px 0;
+  border: 1px solid #634A39;
+  border-radius: 5%;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 5px 5px #634A39;
 }
 .listing img {
   border: 1px solid black;
@@ -169,10 +179,6 @@ ul {
 .control {
   padding: 0px 10px 0px 5px;
 }
-label {
-  font-family: 'Krona One', sans-serif;
-  padding-right: 10px;
-}
 .search {
   display: flex;
   flex-direction: row;
@@ -187,6 +193,23 @@ label {
   display: flex;
   flex-direction: row;
 }
+.logout-buttons{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.add-buttons{
+  display: inline-flex;
+  margin: 5px;
+  padding: 5px;
+  font-size: 20px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px black;
+  background-color: #6AD5CB;
+  font-family: 'Krona One', sans-serif;
+}
 .form-input{
   display: flex;
   flex-direction: row;
@@ -197,7 +220,19 @@ label {
   flex-direction: column;
   justify-content: left;
 }
-select{
-  width: 65%;
-  margin-top: 10px;
+.topchill-logout {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  font-size: 20px;
+  border: 1px solid black;
+  box-shadow: 3px 3px 3px black;
+  background-color: #6AD5CB;
+  font-family: 'Krona One', sans-serif;
+  text-decoration: none;
 }
+.topchill-logout:hover{
+  background-color: lime;
+}
+
+

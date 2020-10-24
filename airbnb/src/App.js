@@ -8,6 +8,7 @@ import Listings from "./components/Listings";
 import PrivateRoute from "./components/PrivateRoute";
 import AddListing from './components/AddListing';
 import EditListing from "./components/EditListing";
+import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 
 import logo from "../src/Mock-Logo.png"
 
@@ -19,7 +20,10 @@ function App() {
     <Router>
      <div className="App">
         <div className="container">
+          <HomeOutlinedIcon font-size='large' href='https://topchill.org' />
+        <a href="https://topchill.org/">
         <img src={logo} alt="logo"></img>
+        </a>
       <Switch>
       <Route exact path="/login" component={UserLogin} />
       <Route exact path="/register" component={UserRegister} />

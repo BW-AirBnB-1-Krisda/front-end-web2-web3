@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import { getListings } from "../actions";
 import { connect } from "react-redux";
 import ListingCard from "./ListingCard";
+import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
 // import { useParams, useHistory } from "react-router-dom";
 
@@ -68,26 +69,32 @@ const Listings = (props) => {
             {props.listings.map(listing => (
                     <ListingCard key={listing.id} listing={listing} />
             ))}
-
-            <a
-            href="/login"
-            onClick={() => window.localStorage.clear()} 
-            >
-            Log out</a>
-         
-
-            <div className="buttons">
-            <button className="topchill-button" onClick={() => props.history.push("/add-listing")} >
-            <div className="control">
-                <ControlPointIcon color="white" />
+                                <div>
+            <button className="add-buttons" onClick={() => props.history.push("/add-listing")} >
+                    <div className="control">
+                        <ControlPointIcon color="white" />
+                    </div>
+                    <div>
+                    Add New Listing
+                    </div>
+                </button>
             </div>
-            <div>
-                Add New Listing
-            </div>
-            </button>
+            <div className="logout-buttons">
+                <button className="topchill-button" startIcon>
+                    <a
+                        href="/login"
+                        onClick={() => window.localStorage.clear()} 
+                    >
+                    <div className="control">
+                        <ArrowDownwardIcon color="white" />
+                    </div>
+                    <div>
+                        Log Out
+                    </div>
+                    </a>
+                </button>
 
             </div>
-
         </div>
 
     )
