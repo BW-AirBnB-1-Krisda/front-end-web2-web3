@@ -1,5 +1,5 @@
 import { axiosWithAuth } from "../util/axiosWithAuth";
-import axios from "axios";
+// import axios from "axios";
 
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESSFUL = "REGISTER_SUCCESSFUL";
@@ -8,7 +8,6 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESSFUL = "LOGIN_SUCCESSFUL";
 
 export const GET_LISTINGS = "GET_LISTINGS";
-// export const GET_LISTING_CARD = "GET_LISTING_CARD";
 
 export const LISTING_PROCESSING = "LISTING_PROCESSING";
 export const LISTING_FETCHED = "LISTING_FETCHED";
@@ -84,10 +83,10 @@ export const login = (user, history) => (dispatch) => {
 
 //ACTION CREATOR : GET USER LISTINGS
 
-export const getListings = (id, history) => (dispatch) => {
+export const getListings = (id) => (dispatch) => {
   console.log("Get listings async action creator: ", dispatch);
 
-  console.log("GET LISTING ID: ", id);
+  console.log("GET USER LISTING ID: ", id);
 
   dispatch({ type: LISTING_PROCESSING });
 
@@ -99,7 +98,9 @@ export const getListings = (id, history) => (dispatch) => {
         type: LISTING_FETCHED,
         payload: res.data,
       });
-            history.push(`/listings/user/${id}`);
+
+      // console.log("HISTORY PUSH ID: ", userId)
+      //       history.push(`/listings/user/${userId}`);
     })
     .catch((err) => {
       console.log("Action: FAIL to getListing: ", err);
@@ -129,8 +130,8 @@ export const addListing = (listing, id, history) => (dispatch) => {
               type: ADD_LISTING_SUCCESSFUL,
               payload: response.data,
             });
-            getListings(id, history);
-            history.push(`/listings/user/${id}`);
+            // getListings(id, history, userId);
+            history.push(`/listings/user/${response.data.user_id}`);
           })
           .catch((err) => {
             console.log("AddListing NOT successful: ", err);
@@ -179,9 +180,7 @@ export const deleteListing = (id) => (dispatch) => {
     .delete(`/listings/${id}`)
     .then((res) => {
       console.log("Action creator deleteListing DELETE: ", res.data);
-      // getListings(id, history);
-    //   history.push(`/listings/user/${id}`);
-    //   alert("Your listing has successfully been deleted!");
+
     })
     .catch((err) => {
       console.log("deleteListing NOT successful: ", err);
@@ -190,8 +189,6 @@ export const deleteListing = (id) => (dispatch) => {
 
 
 //ACTION CREATOR : EDIT A LISTING
-
-// const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
 export const editListingAction = (listingId, listing, history) => (dispatch) => {
   console.log("Action creator editListing: ", dispatch);
@@ -211,7 +208,6 @@ export const editListingAction = (listingId, listing, history) => (dispatch) => 
               type: EDIT_LISTING_SUCCESSFUL,
               payload: response.data,
             });
-            // getListings(id, history);
             history.push(`/listings/user/${response.data.user_id}`);
           })
           .catch((err) => {
@@ -247,28 +243,3 @@ export const editListingAction = (listingId, listing, history) => (dispatch) => 
 //     });
 };
 
-
-//ACTION CREATOR : GET USER LISTINGS
-
-// export const getListingCard = (id) => (dispatch) => {
-//   console.log("Get listing card action creator: ", dispatch);
-
-//   dispatch({ type: LISTING_PROCESSING });
-
-//   axiosWithAuth()
-//     .get(`/listings/${id}`)
-//     .then((res) => {
-//       console.log("Action: getListingCard: ", res.data);
-//       dispatch({
-//         type: LISTING_FETCHED,
-//         payload: res.data,
-//       });
-//     })
-//     .catch((err) => {
-//       console.log("Action: FAIL to getListingCard: ", err);
-//       dispatch({
-//         type: LISTING_FAILED_TO_FETCH,
-//         payload: err.message,
-//       });
-//     });
-// };

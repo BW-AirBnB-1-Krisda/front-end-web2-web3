@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import ListingCard from "./ListingCard";
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 
-// import { useParams, useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import ControlPointIcon from '@material-ui/icons/ControlPoint';
 
@@ -29,17 +29,19 @@ const Listings = (props) => {
           price: 900
       }])
 
-      const [city, setCity] = useState(["St. Louis"]);
+    //   const [city, setCity] = useState(["St. Louis"]);
 
     //   const history = useHistory();
 
     useEffect(() => {
-        props.getListings(props.user.user.id, props.history)
+        props.getListings(props.user.user.id)
+        // history.push(`/listings/user/${props.user.user.id}`)
+        
     }, [listingsList] )
 
-    const handleChange = (event) => {
-        setCity(event.target.value);
-      };
+    // const handleChange = (event) => {
+    //     setCity(event.target.value);
+    //   };
 
     if (!listingsList) {
         return <div>Loading listing list...</div>}
@@ -56,8 +58,8 @@ const Listings = (props) => {
                     type="text"
                     name="textfield"
                     placeholder="Search"
-                    onChange={handleChange}
-                    value={setCity}
+                    // onChange={handleChange}
+                    // value={setCity}
                     />
                 </div>
             </form>
@@ -66,8 +68,9 @@ const Listings = (props) => {
                 <h1>Welcome {props.user.user.username}</h1>
             </div>
 
-            {props.listings.map(listing => (
-                    <ListingCard key={listing.id} listing={listing} />
+            {props.listings.length > 0 && 
+            props.listings.map(listing => (
+                    <ListingCard key={listing.id} listing={listing} setListingsList={setListingsList} />
             ))}
                                 <div>
             <button className="add-buttons" onClick={() => props.history.push("/add-listing")} >

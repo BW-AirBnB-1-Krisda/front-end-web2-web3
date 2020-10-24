@@ -12,19 +12,19 @@ const ListingCard = (props) => {
 
     const history = useHistory();
 
-   //   const deleteOnListings = (id) => {
-    //     const newListingArray = props.listings.filter((item) => item.id !== id)
-    //     setListingsList(newListingArray)
-    // }
+     const deleteOnListings = (id) => {
+        const newListingArray = props.listings.filter((item) => item.id !== id)
+        props.setListingsList(newListingArray)
+    }
 
     console.log("Listing ID to delete: ", props.listing.id)
     
     const deleteListingCard = (e) => {
         e.preventDefault()
-        // deleteOnListings(id) 
+        deleteOnListings(props.listing.id) 
         props.deleteListing(props.listing.id)
-        props.getListings(props.listing.user_id, props.history)
-        // history.push(`/listings/user/${props.listing.user_id}`)
+        props.getListings(props.listing.user_id)
+        history.push(`/listings/user/${props.user.user.id}`)
     }
 
 
