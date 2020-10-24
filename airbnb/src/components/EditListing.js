@@ -49,7 +49,6 @@ const EditListing = (props) => {
           <div className="form-input">
             <label htmlFor="city">City:</label>
             <input
-              htmlFor="city"
               id="city"
               name="city"
               type="text"
@@ -60,9 +59,8 @@ const EditListing = (props) => {
           </div>
 
           <div className="form-input">
-            <label htmlFor="guests">Number of Guests:</label>
+            <label htmlFor="guests_included">Number of Guests:</label>
             <input
-              htmlFor="guests_included"
               id="guests_included"
               name="guests_included"
               type="number"
@@ -73,9 +71,8 @@ const EditListing = (props) => {
           </div>
 
           <div className="form-input">
-            <label htmlFor="nights">Min Number of Nights:</label>
+            <label htmlFor="min_nights">Min Number of Nights:</label>
             <input
-              htmlFor="min_nights"
               id="min_nights"
               name="min_nights"
               type="number"
@@ -99,25 +96,25 @@ const EditListing = (props) => {
           </div> */}
 
           <div className="form-input">
-            <label htmlFor="room">Room Type:</label>
+            <label htmlFor="room_type">Room Type:</label>
             <select
-              htmlFor="room_type"
               id="room_type"
               name="room_type"
               type="text"
               placeholder="Room Type"
               onChange={handleInputChange}
+              value={editListing.room_type}
             >
-              <option value={editListing.room_type}>King</option>
-              <option value={editListing.room_type}>Two Queen</option>
-              <option value={editListing.room_type}>Queen</option>
+               <option>Pick a room type</option>
+              <option value="King">King</option>
+              <option value="Two Queen">Two Queen</option>
+              <option value="Queen">Queen</option>
             </select>
           </div>
 
         <div className="form-input">
           <label htmlFor="security_deposit">Security Deposit:</label>
           <input
-            htmlFor="security_deposit"
             id="security_deposit"
             name="security_deposit"
             type="float"

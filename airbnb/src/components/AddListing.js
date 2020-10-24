@@ -48,9 +48,8 @@ return(
             value={newListing.city}
             onChange={handleInputChange}/>
 
-            <label htmlFor="room">Room Type:</label>
+            <label htmlFor="room_type">Room Type:</label>
             <select
-              htmlFor="room_type"
               id="room_type"
               name="room_type"
               type="text"
@@ -58,18 +57,11 @@ return(
               onChange={handleInputChange}
               value={newListing.room_type}
             >
-              <option value={newListing.room_type}>King</option>
-              <option value={newListing.room_type}>Two Queen</option>
-              <option value={newListing.room_type}>Queen</option>
+                 <option>Pick a room type</option>
+              <option value="King">King</option>
+              <option value="Two Queen">Two Queen</option>
+              <option value="Queen">Queen</option>
             </select>
-
-            {/* <input htmlFor="room_type"
-            id="room_type"
-            name="room_type"
-            type="text"
-            placeholder="Room Type"
-            value={newListing.room_type}
-            onChange={handleInputChange}/> */}
 
             <label htmlFor="security_deposit">Security Deposit:</label>
             <input 
