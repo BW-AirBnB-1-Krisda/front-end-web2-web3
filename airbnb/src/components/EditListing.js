@@ -113,7 +113,6 @@ const EditListing = (props) => {
               <option value={editListing.room_type}>Queen</option>
             </select>
           </div>
-        </div>
 
         <div className="form-input">
           <label htmlFor="security_deposit">Security Deposit:</label>
@@ -127,6 +126,7 @@ const EditListing = (props) => {
             onChange={handleInputChange}
           />
         </div>
+          </div>
 
         {/* <input
           htmlFor="room_type"

@@ -39,7 +39,8 @@ return(
     <div>
         <form onSubmit={submitNewListingForm}>
 
-            <input htmlFor="city"
+        <label htmlFor="city">City:</label>
+            <input 
             id="city"
             name="city"
             type="text"
@@ -47,15 +48,31 @@ return(
             value={newListing.city}
             onChange={handleInputChange}/>
 
-            <input htmlFor="room_type"
+            <label htmlFor="room">Room Type:</label>
+            <select
+              htmlFor="room_type"
+              id="room_type"
+              name="room_type"
+              type="text"
+              placeholder="Room Type"
+              onChange={handleInputChange}
+              value={newListing.room_type}
+            >
+              <option value={newListing.room_type}>King</option>
+              <option value={newListing.room_type}>Two Queen</option>
+              <option value={newListing.room_type}>Queen</option>
+            </select>
+
+            {/* <input htmlFor="room_type"
             id="room_type"
             name="room_type"
             type="text"
             placeholder="Room Type"
             value={newListing.room_type}
-            onChange={handleInputChange}/>
+            onChange={handleInputChange}/> */}
 
-            <input htmlFor="security_deposit"
+            <label htmlFor="security_deposit">Security Deposit:</label>
+            <input 
             id="security_deposit"
             name="security_deposit"
             type="float"
@@ -63,7 +80,8 @@ return(
             value={newListing.security_deposit}
             onChange={handleInputChange}/>
 
-            <input htmlFor="guests_included"
+            <label htmlFor="guests_included">No. of guests included:</label>
+            <input 
             id="guests_included"
             name="guests_included"
             type="number"
@@ -71,6 +89,7 @@ return(
             value={newListing.guests_included}
             onChange={handleInputChange}/>
 
+            <label htmlFor="min_nights">Min. no. of nights:</label>
             <input htmlFor="min_nights"
             id="min_nights"
             name="min_nights"
