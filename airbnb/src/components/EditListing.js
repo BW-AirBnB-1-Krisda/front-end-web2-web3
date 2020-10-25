@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import EditIcon from "@material-ui/icons/Edit";
+import { axiosWithAuth } from "../util/axiosWithAuth";
 
 const initialEditListingForm = {
   // id: "",
@@ -21,9 +22,15 @@ const EditListing = (props) => {
 
   const { id } = useParams();
 
-  // useEffect(() => {
-  //   props.getListings(props.listing.id, props.history);
-  // }, [props.id]);
+  useEffect(() => {
+    axiosWithAuth()
+    .get(`/listings/${id}`)
+    .then((res) => {
+      console.log("EditListing Item: ", { res } )
+      setEditListing(res.data)
+    })
+    .catch((err) => console.log("EditListing Item Error: ", err))
+  }, [id]);
 
   const handleInputChange = (e) => {
     e.persist();

@@ -111,31 +111,6 @@ export const getListings = (id) => (dispatch) => {
     });
 };
 
-
-// export const fetchOptimalPrice = (listings) => (dispatch) => {
-
-//   console.log("Action creator fetchOptimalPrice: ", dispatch);
-
-//   dispatch({ type: FETCH_OPTIMAL_PRICE_START });
-
-//   axios
-//   .get(
-//     `https://airbnbapi-ds.herokuapp.com/predict?city=${listings.city}&room_type=${listings.room_type}&security_deposit=${listings.security_deposit}&guests_included=${listings.guests_included}&mininum_nights=${listings.min_nights}`
-//   )
-//   .then((res) => {
-//     console.log("Action creator DS API GET success: ", res);
-
-//     dispatch({
-//       type: FETCH_OPTIMAL_PRICE_SUCCESSFUL,
-//       payload: res.data.prediction,
-//     }); 
-
-// })
-// .catch((error) => {
-//   console.log("DS API NOT successful: ", error);
-// })
-// }
-
 //ACTION CREATOR : ADD A LISTING WITH OPTIMAL PRICE
 
 export const addListing = (listings, id, history) => (dispatch) => {
@@ -173,37 +148,43 @@ export const addListing = (listings, id, history) => (dispatch) => {
             }
 
 
+//ACTION CREATOR : EDIT A LISTING
+
+export const editListingAction = (listingId, listings, history) => (dispatch) => {
+  console.log("Action creator editListing: ", dispatch);
+
+  dispatch({ type: EDIT_LISTING_START });
+
+  axios
+  .get(
+    `https://airbnbapi-ds.herokuapp.com/predict?city=${listings.city}&room_type=${listings.room_type}&security_deposit=${listings.security_deposit}&guests_included=${listings.guests_included}&mininum_nights=${listings.min_nights}`
+  )
+  .then((res) => {
+    console.log("Action creator editListing Optimal Price success: ", res.data.prediction);
+    axiosWithAuth()
+          .put(`/listings/${listingId}`, res.data.prediction)
+          .then((response) => {
+            console.log(
+              "Action creator editListing success PUT: ",
+              response.data
+            );
+            dispatch({
+              type: EDIT_LISTING_SUCCESSFUL,
+              payload: response.data,
+            });
+            history.push(`/listings/user/${response.data.user_id}`);
+          })
+          .catch((err) => {
+            console.log("Action creator Edit Listing NOT successful: ", err);
+          });
+        })
+          .catch((error) => {
+            console.log("Edit Listing Optimal Price NOT successful: ", error);
+          });
+        }
 
 
-//ACTION CREATOR : ADD A LISTING
-
-// export const addListing = (listing, id, history) => (dispatch) => {
-//   console.log("Action creator addListing: ", dispatch);
-
-//   dispatch({ type: ADD_LISTING_START });
-
-//   axiosWithAuth()
-//           .post(`/listings/user/${id}`, listing)
-//           .then((response) => {
-//             console.log(
-//               "Action creator addListing success POST: ",
-//               response.data
-//             );
-//             dispatch({
-//               type: ADD_LISTING_SUCCESSFUL,
-//               payload: response.data,
-//             });
-//             // getListings(id, history, userId);
-//             history.push(`/listings/user/${response.data.user_id}`);
-//           })
-//           .catch((err) => {
-//             console.log("AddListing NOT successful: ", err);
-//           });
-
-// };
-
-
-//ACTION CREATOR : DELETE A LISTING
+          //ACTION CREATOR : DELETE A LISTING
 
 export const deleteListing = (id) => (dispatch) => {
   console.log("Action creator deleteListing: ", dispatch);
@@ -223,59 +204,4 @@ export const deleteListing = (id) => (dispatch) => {
     });
 };
 
-
-//ACTION CREATOR : EDIT A LISTING
-
-export const editListingAction = (listingId, listing, history) => (dispatch) => {
-  console.log("Action creator editListing: ", dispatch);
-
-  dispatch({ type: EDIT_LISTING_START });
-
-  console.log("EDIT LISTING LISTING PARAM ", listing)
-
-  axiosWithAuth()
-          .put(`/listings/${listingId}`, listing)
-          .then((response) => {
-            console.log(
-              "Action creator editListing success POST: ",
-              response.data
-            );
-            dispatch({
-              type: EDIT_LISTING_SUCCESSFUL,
-              payload: response.data,
-            });
-            history.push(`/listings/user/${response.data.user_id}`);
-          })
-          .catch((err) => {
-            console.log("Edit Listing NOT successful: ", err);
-          });
-
-//   axios
-//     .post(
-//       `https://airbnbapi-ds.herokuapp.com/predict?city=${listings.city}&room_type=${listings.room_type}&security_deposit=${listings.security_deposit}&guest_included=${listings.guests_included}&mininum_nights=${listings.min_nights}`
-//     )
-//     .then((res) => {
-//       console.log("Action creator editListing DS API POST success: ", res.data);
-//       axiosWithAuth()
-//         .put(`/listings/${listings.id}`, res.data)
-//         .then((response) => {
-//           console.log(
-//             "Action creator editListing success POST: ",
-//             response.data
-//           );
-//           dispatch({
-//             type: EDIT_LISTING_SUCCESSFUL,
-//             payload: response.data,
-//           });
-//           getListings(id, history);
-//         //   history.push(`/listings/user/${id}`);
-//         })
-//         .catch((err) => {
-//           console.log("EditListing NOT successful: ", err);
-//         });
-//     })
-//     .catch((error) => {
-//       console.log("EditListing DS API NOT successful: ", error);
-//     });
-};
 

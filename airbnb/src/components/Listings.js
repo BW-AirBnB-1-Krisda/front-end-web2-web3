@@ -60,7 +60,7 @@ const Listings = (props) => {
                     id="name"
                     type="text"
                     name="textfield"
-                    placeholder="Search"
+                    placeholder="Washington DC"
                     // onChange={handleChange}
                     // value={setCity}
                     />
