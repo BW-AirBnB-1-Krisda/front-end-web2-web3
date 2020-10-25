@@ -50,6 +50,9 @@ const Listings = (props) => {
 
     return (
         <div>
+             <div>
+                <h1>Welcome {props.user.user.username}</h1>
+            </div>
             <form>
                 <div className="search">
                 <label htmlFor="city">Search:</label>
@@ -63,10 +66,6 @@ const Listings = (props) => {
                     />
                 </div>
             </form>
-
-            <div>
-                <h1>Welcome {props.user.user.username}</h1>
-            </div>
 
             <div className="listing">
         <h1>$900</h1>
