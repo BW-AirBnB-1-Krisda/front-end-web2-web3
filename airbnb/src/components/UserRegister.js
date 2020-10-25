@@ -84,7 +84,7 @@ function UserRegister (props) {
                             type="text"
                             id="username"
                             name="username"
-                            placeholder="username"
+                            placeholder="Awesome property owner"
                             value={userRegister.username}
                             onChange={handleInputChange}
                             data-cy="username"
@@ -97,7 +97,7 @@ function UserRegister (props) {
                             type="password"
                             id="password"
                             name="password"
-                            placeholder="password"
+                            placeholder="Kaching"
                             value={userRegister.password}
                             onChange={handleInputChange}
                             data-cy="password"
@@ -109,14 +109,14 @@ function UserRegister (props) {
                         <input
                             type="text"
                             name="email"
-                            placeholder="email"
+                            placeholder="property-owner@awesome.com"
                             value={userRegister.email}
                             onChange={handleInputChange}
                             data-cy="email"
                         />
                         {errors.email.length > 0 ? <p className="error">{errors.email}</p> : null}
                     </label>
-                        <label htmlFor="terms" className="terms">
+                        {/* <label htmlFor="terms" className="terms">
                             Do you agree to the terms and conditions?
                             <input 
                             type="checkbox"
@@ -125,7 +125,7 @@ function UserRegister (props) {
                             // onChange={handleInputChange}
                             data-cy="terms"
                             />
-                        </label>
+                        </label> */}
                     <button 
                     className="submit" 
                     type="submit" 

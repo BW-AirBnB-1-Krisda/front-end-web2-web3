@@ -69,7 +69,7 @@ function UserLogin(props) {
             <label htmlFor="username">
                 Username:
                 <input 
-                placeholder="username"
+                placeholder="Awesome property owner"
                 id="username"
                 name="username"
                 type="text"
@@ -82,7 +82,7 @@ function UserLogin(props) {
             <label htmlFor="password">
                 Password:
                 <input htmlFor="password"
-                placeholder="password"
+                placeholder="Kaching"
                 id="password"
                 name="password"
                 type="password"
