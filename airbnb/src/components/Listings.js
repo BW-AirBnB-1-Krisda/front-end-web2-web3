@@ -68,6 +68,38 @@ const Listings = (props) => {
                 <h1>Welcome {props.user.user.username}</h1>
             </div>
 
+            <div className="listing">
+        <h1>$900</h1>
+            <img src="https://a0.muscache.com/im/pictures/b0c6aa89-c43e-424b-89f0-34b27b840a9c.jpg?im_w=1200" alt="airbnb"></img>
+        <div className="attributes">
+
+        <ul>
+                <li>City: St. Louis</li>
+                <li>Room Type: King</li>
+                <li>Security Deposit: $400</li>
+                <li>Max Guests: 4</li>
+                <li>Min Number of Nights: 2</li>
+                <li>Optimal Price: $700</li>
+            </ul>
+        </div>
+        </div>
+
+        <div className="listing">
+        <h1>$400</h1>
+            <img src="https://a0.muscache.com/im/pictures/b0c6aa89-c43e-424b-89f0-34b27b840a9c.jpg?im_w=1200" alt="airbnb"></img>
+        <div className="attributes">
+
+        <ul>
+                <li>City: Chicago</li>
+                <li>Room Type: Queen</li>
+                <li>Security Deposit: $200</li>
+                <li>Max Guests: 4</li>
+                <li>Min Number of Nights: 3</li>
+                <li>Optimal Price: $400</li>
+            </ul>
+        </div>
+        </div>
+
             {props.listings.length > 0 && 
             props.listings.map(listing => (
                     <ListingCard key={listing.id} listing={listing} setListingsList={setListingsList} />

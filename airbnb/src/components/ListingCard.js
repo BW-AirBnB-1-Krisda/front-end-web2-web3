@@ -31,7 +31,7 @@ const ListingCard = (props) => {
 
     return (
         <div className="listing">
-        <h1>{props.city}</h1>
+        <h1>${Math.round(props.listing.price)}</h1>
             <img src="https://a0.muscache.com/im/pictures/b0c6aa89-c43e-424b-89f0-34b27b840a9c.jpg?im_w=1200" alt="airbnb"></img>
         <div className="attributes">
 
@@ -41,7 +41,7 @@ const ListingCard = (props) => {
                 <li>Security Deposit: ${props.listing.security_deposit}</li>
                 <li>Max Guests: {props.listing.guests_included}</li>
                 <li>Min Number of Nights: {props.listing.min_nights}</li>
-                <li>OPTI Price: ${Math.round(props.listing.price)}</li>
+                <li>Optimal Price: ${Math.round(props.listing.price)}</li>
             </ul>
         </div>
 
