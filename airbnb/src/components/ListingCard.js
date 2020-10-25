@@ -51,7 +51,7 @@ const ListingCard = (props) => {
                 <ControlPointIcon color="white" />
             </div>
             <div>
-                Edit Listing
+                Update
             </div>
         </button>
 
@@ -60,7 +60,7 @@ const ListingCard = (props) => {
                 <DeleteIcon color="white" />
             </div>
             <div>
-                Delete Listing
+                Delete
             </div>
         </button>
         </div>

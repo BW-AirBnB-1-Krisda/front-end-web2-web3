@@ -125,21 +125,11 @@ const EditListing = (props) => {
         </div>
           </div>
 
-        {/* <input
-          htmlFor="room_type"
-          id="room_type"
-          name="room_type"
-          type="text"
-          placeholder="Room Type"
-          value={editListing.room_type}
-          onChange={handleInputChange}
-        /> */}
-
         <button className="topchill-button" type="submit">
           <div>
             <EditIcon />
           </div>
-          <div>Edit Listing</div>
+          <div>Save</div>
         </button>
       </form>
     </div>
