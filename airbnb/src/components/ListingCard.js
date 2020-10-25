@@ -41,7 +41,7 @@ const ListingCard = (props) => {
                 <li>Security Deposit: ${props.listing.security_deposit}</li>
                 <li>Max Guests: {props.listing.guests_included}</li>
                 <li>Min Number of Nights: {props.listing.min_nights}</li>
-                <li>OPTI Price: ${props.listing.price}</li>
+                <li>OPTI Price: ${Math.round(props.listing.price)}</li>
             </ul>
         </div>
 

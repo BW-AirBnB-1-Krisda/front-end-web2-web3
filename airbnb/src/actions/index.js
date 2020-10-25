@@ -1,5 +1,5 @@
 import { axiosWithAuth } from "../util/axiosWithAuth";
-// import axios from "axios";
+import axios from "axios";
 
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESSFUL = "REGISTER_SUCCESSFUL";
@@ -112,15 +112,45 @@ export const getListings = (id) => (dispatch) => {
 };
 
 
-//ACTION CREATOR : ADD A LISTING
+// export const fetchOptimalPrice = (listings) => (dispatch) => {
 
-export const addListing = (listing, id, history) => (dispatch) => {
+//   console.log("Action creator fetchOptimalPrice: ", dispatch);
+
+//   dispatch({ type: FETCH_OPTIMAL_PRICE_START });
+
+//   axios
+//   .get(
+//     `https://airbnbapi-ds.herokuapp.com/predict?city=${listings.city}&room_type=${listings.room_type}&security_deposit=${listings.security_deposit}&guests_included=${listings.guests_included}&mininum_nights=${listings.min_nights}`
+//   )
+//   .then((res) => {
+//     console.log("Action creator DS API GET success: ", res);
+
+//     dispatch({
+//       type: FETCH_OPTIMAL_PRICE_SUCCESSFUL,
+//       payload: res.data.prediction,
+//     }); 
+
+// })
+// .catch((error) => {
+//   console.log("DS API NOT successful: ", error);
+// })
+// }
+
+//ACTION CREATOR : ADD A LISTING WITH OPTIMAL PRICE
+
+export const addListing = (listings, id, history) => (dispatch) => {
   console.log("Action creator addListing: ", dispatch);
 
   dispatch({ type: ADD_LISTING_START });
 
-  axiosWithAuth()
-          .post(`/listings/user/${id}`, listing)
+  axios
+  .get(
+    `https://airbnbapi-ds.herokuapp.com/predict?city=${listings.city}&room_type=${listings.room_type}&security_deposit=${listings.security_deposit}&guests_included=${listings.guests_included}&mininum_nights=${listings.min_nights}`
+  )
+  .then((res) => {
+          console.log("Action creator addListing Optimal Price success: ", res.data.prediction);
+          axiosWithAuth()
+          .post(`/listings/user/${id}`, res.data.prediction)
           .then((response) => {
             console.log(
               "Action creator addListing success POST: ",
@@ -136,35 +166,41 @@ export const addListing = (listing, id, history) => (dispatch) => {
           .catch((err) => {
             console.log("AddListing NOT successful: ", err);
           });
+        })
+          .catch((error) => {
+                  console.log("AddListing Optimal Price NOT successful: ", error);
+                });
+            }
 
-//   axios
-//     .get(
-//       `https://airbnbapi-ds.herokuapp.com/predict?city=${listings.city}&room_type=${listings.room_type}&security_deposit=${listings.security_deposit}&guest_included=${listings.guests_included}&mininum_nights=${listings.min_nights}`
-//     )
-//     .then((res) => {
-//       console.log("Action creator addListing DS API POST success: ", res.data);
-//       axiosWithAuth()
-//         .post(`/listings/user/${id}`, res.data)
-//         .then((response) => {
-//           console.log(
-//             "Action creator addListing success POST: ",
-//             response.data
-//           );
-//           dispatch({
-//             type: ADD_LISTING_SUCCESSFUL,
-//             payload: response.data,
+
+
+
+//ACTION CREATOR : ADD A LISTING
+
+// export const addListing = (listing, id, history) => (dispatch) => {
+//   console.log("Action creator addListing: ", dispatch);
+
+//   dispatch({ type: ADD_LISTING_START });
+
+//   axiosWithAuth()
+//           .post(`/listings/user/${id}`, listing)
+//           .then((response) => {
+//             console.log(
+//               "Action creator addListing success POST: ",
+//               response.data
+//             );
+//             dispatch({
+//               type: ADD_LISTING_SUCCESSFUL,
+//               payload: response.data,
+//             });
+//             // getListings(id, history, userId);
+//             history.push(`/listings/user/${response.data.user_id}`);
+//           })
+//           .catch((err) => {
+//             console.log("AddListing NOT successful: ", err);
 //           });
-//           getListings(id);
-//           history.push(`/listings/user/${id}`);
-//         })
-//         .catch((err) => {
-//           console.log("AddListing NOT successful: ", err);
-//         });
-//     })
-//     .catch((error) => {
-//       console.log("AddListing DS API NOT successful: ", error);
-//     });
-};
+
+// };
 
 
 //ACTION CREATOR : DELETE A LISTING
