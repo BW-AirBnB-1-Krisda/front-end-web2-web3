@@ -43,15 +43,15 @@ const Listings = (props) => {
     //     setCity(event.target.value);
     //   };
 
-    if (!listingsList) {
-        return <div>Loading listing list...</div>}
+    // if (!listingsList) {
+    //     return <div>Loading listing list...</div>}
 
-        console.log("LISTING LIST: ", props.listings)
+    //     console.log("LISTING LIST: ", props.listings)
 
     return (
         <div>
              <div>
-                <h1>Welcome {props.user.user.username}</h1>
+                <h1>Welcome {props.popularity}</h1>
             </div>
             <form>
                 <div className="search">
@@ -67,7 +67,7 @@ const Listings = (props) => {
                 </div>
             </form>
 
-            <div className="listing">
+            {/* <div className="listing">
         <h1>$900</h1>
             <img src="https://a0.muscache.com/im/pictures/b0c6aa89-c43e-424b-89f0-34b27b840a9c.jpg?im_w=1200" alt="airbnb"></img>
         <div className="attributes">
@@ -128,7 +128,7 @@ const Listings = (props) => {
                     </a>
                 </button>
 
-            </div>
+            </div> */}
         </div>
 
     )

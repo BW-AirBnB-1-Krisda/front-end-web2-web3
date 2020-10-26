@@ -90,8 +90,8 @@ export const getListings = (id) => (dispatch) => {
 
   dispatch({ type: LISTING_PROCESSING });
 
-  axiosWithAuth()
-    .get(`/listings/user/${id}`)
+axios
+    .get("https://spotify-dspt7-bw.herokuapp.com/artistinfo?input_artist=Taylor+Swift")
     .then((res) => {
       console.log("Action: getListing: ", res.data);
       dispatch({

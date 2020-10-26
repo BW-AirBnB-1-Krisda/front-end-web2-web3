@@ -1,31 +1,33 @@
 import * as actions from "../actions";
 
 const initialState = {
-  listings: [
-    {
-      id: "",
-      city: "",
-      room_type: "",
-      security_deposit: 0, //float
-      guests_included: 0, //int
-      min_nights: 0, //int
-      price: 0,
-      user_id: ""
-    },
-  ],
-  user: {
-    id: "",
-    username: "",
-    password: "",
-    email: "",
-    message: "",
-    token: "",
+  name: "",
+  popularity: 0,
+  // listings: [
+  //   {
+  //     id: "",
+  //     city: "",
+  //     room_type: "",
+  //     security_deposit: 0, //float
+  //     guests_included: 0, //int
+  //     min_nights: 0, //int
+  //     price: 0,
+  //     user_id: ""
+  //   },
+  // ],
+  // user: {
+  //   id: "",
+  //   username: "",
+  //   password: "",
+  //   email: "",
+  //   message: "",
+  //   token: "",
 
-    user: {
-      username: "",
-      id: "",
-    },
-  },
+  //   user: {
+  //     username: "",
+  //     id: "",
+  //   },
+  // },
   isFetching: "",
   error: "",
 };
@@ -104,8 +106,8 @@ export const reducer = (state = initialState, action) => {
 
       return {
         ...state,
-        listings: action.payload,
-        isFetching: false,
+        name: action.payload.name,
+        popularity: action.payload.popularity,
       };
 
     case actions.LISTING_FAILED_TO_FETCH:
