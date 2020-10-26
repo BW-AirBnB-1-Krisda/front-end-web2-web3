@@ -10,24 +10,26 @@ import ControlPointIcon from '@material-ui/icons/ControlPoint';
 
 const Listings = (props) => {
 
-    const [listingsList, setListingsList] = useState([ {
-        id: 0,
-        city: "St. Louis",
-        room_type: "King",
-        security_deposit: "200",
-        guests_included: 4,
-        min_nights: 2,
-        price: 700
-      },
-      {
-          id: 1,
-          city: "Chicago",
-          room_type: "Queen",
-          security_deposit: "400",
-          guests_included: 4,
-          min_nights: 3,
-          price: 900
-      }])
+    const [listingsList, setListingsList] = useState([ 
+    //     {
+    //     id: 0,
+    //     city: "St. Louis",
+    //     room_type: "King",
+    //     security_deposit: "200",
+    //     guests_included: 4,
+    //     min_nights: 2,
+    //     price: 700
+    //   },
+    //   {
+    //       id: 1,
+    //       city: "Chicago",
+    //       room_type: "Queen",
+    //       security_deposit: "400",
+    //       guests_included: 4,
+    //       min_nights: 3,
+    //       price: 900
+    //   }
+    ])
 
     //   const [city, setCity] = useState(["St. Louis"]);
 
@@ -67,7 +69,7 @@ const Listings = (props) => {
                 </div>
             </form>
 
-            <div className="listing">
+            {/* <div className="listing">
         <h1>$900</h1>
             <img src="https://a0.muscache.com/im/pictures/b0c6aa89-c43e-424b-89f0-34b27b840a9c.jpg?im_w=1200" alt="airbnb"></img>
         <div className="attributes">
@@ -97,7 +99,7 @@ const Listings = (props) => {
                 <li>Optimal Price: $400</li>
             </ul>
         </div>
-        </div>
+        </div> */}
 
             {props.listings.length > 0 && 
             props.listings.map(listing => (

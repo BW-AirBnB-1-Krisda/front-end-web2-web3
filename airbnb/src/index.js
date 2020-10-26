@@ -10,6 +10,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import { reducer } from "./reducers"; 
 
+//Set up redux store
 let store = configureStore({
   reducer
   // applyMiddleware(thunk)
