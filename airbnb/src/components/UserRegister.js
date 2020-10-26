@@ -135,8 +135,7 @@ function UserRegister (props) {
                     </button>
                     <div className="loginButton">
                     <Link to="/login">
-                    <h5>Already a Member?</h5>
-                  <button>Login</button>
+                    <h5>Already a Member?   Click Here</h5>
                 </Link>
               </div>
             </form>

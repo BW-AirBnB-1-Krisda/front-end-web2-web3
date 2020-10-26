@@ -124,7 +124,7 @@ const Listings = (props) => {
                     <div className="control">
                         <ArrowDownwardIcon color="white" />
                     </div>
-                    <div>
+                    <div className="logout">
                         Log Out
                     </div>
                     </a>

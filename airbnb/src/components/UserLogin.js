@@ -98,8 +98,7 @@ function UserLogin(props) {
             <div className="nav-links">
                <div className="registerButton">
                  <Link to="/register">
-                   <h5>New User?</h5>
-                   <button>Create Account</button>
+                   <h5>New User?  Click Here</h5>
                  </Link>
                </div>
            </div>

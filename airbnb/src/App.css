@@ -99,7 +99,8 @@ label {
   padding-right: 10px;
 }
 h5{
-  text-decoration: none;
+  color: black;
+  margin-top: 100px;
 }
 img {
   width: 350px;
@@ -124,6 +125,7 @@ select{
 }
 .submit{
   margin-top: 10px;
+  color: black;
 }
 .nav-links{
   margin-top: 5%;
@@ -166,6 +168,7 @@ select{
 .topchill-button {
   display: flex;
   margin: 5px;
+  color: black;
   padding: 5px;
   font-size: 20px;
   border: 1px solid black;
@@ -178,6 +181,7 @@ select{
 }
 .control {
   padding: 0px 10px 0px 5px;
+  color: black;
 }
 .search {
   display: flex;
@@ -195,6 +199,7 @@ select{
 }
 .logout-buttons{
   display: inline-flex;
+  color: black;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -202,6 +207,7 @@ select{
 }
 .add-buttons{
   display: inline-flex;
+  color: black;
   margin: 5px;
   padding: 5px;
   font-size: 20px;
@@ -222,6 +228,7 @@ select{
 }
 .topchill-logout {
   display: flex;
+  color: black;
   flex-direction: row;
   margin: 5px;
   font-size: 20px;
@@ -234,5 +241,7 @@ select{
 .topchill-logout:hover{
   background-color: lime;
 }
-
+.logout{
+  color: black;
+}
 
