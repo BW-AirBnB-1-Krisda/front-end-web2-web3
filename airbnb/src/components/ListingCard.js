@@ -23,7 +23,7 @@ const ListingCard = (props) => {
         e.preventDefault()
         deleteOnListings(props.listing.id) 
         props.deleteListing(props.listing.id)
-        props.getListings(props.listing.user_id)
+        // props.getListings(props.listing.user_id)
         history.push(`/listings/user/${props.user.user.id}`)
     }
 

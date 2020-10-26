@@ -1,5 +1,6 @@
 import * as actions from "../actions";
 
+//Set up initial state for store
 const initialState = {
   listings: [
     {
@@ -92,7 +93,7 @@ export const reducer = (state = initialState, action) => {
       //GET USER LISTINGS
 
     case actions.LISTING_PROCESSING:
-      console.log("Fetching listing");
+      console.log("Fetching listing: reducer");
 
       return {
         ...state,
@@ -100,7 +101,7 @@ export const reducer = (state = initialState, action) => {
       };
 
     case actions.LISTING_FETCHED:
-      console.log("Fetched listing");
+      console.log("Fetched listing: reducer");
 
       return {
         ...state,
